@@ -1,0 +1,1546 @@
+2025-07-08 02:10:25,627 || INFO || JID set to: worker@localhost/ZpquB--4
+2025-07-08 02:10:27,815 || INFO || JID set to: manager@localhost/ViUoHjxw
+2025-07-08 02:10:27,820 || INFO || Killing behavior OneShotBehaviour/SimulateClientRequest with exit code: None
+2025-07-08 02:10:28,884 || INFO || HTTP Request: GET https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=TSLA&apikey=POFEW0Q1VCNTQ4GS "HTTP/1.1 200 OK"
+2025-07-08 02:11:20,176 || WARNING || Keyboard interrupt received. Stopping SPADE...
+2025-07-08 02:11:20,177 || INFO || Killing behavior CyclicBehaviour/HandleSubtask with exit code: None
+2025-07-08 02:11:20,177 || INFO || Killing behavior CyclicBehaviour/ReceiveWorkerResponse with exit code: None
+2025-07-08 02:11:20,180 || INFO || connection_lost: (None,)
+2025-07-08 02:11:20,183 || INFO || connection_lost: (None,)
+2025-07-08 02:11:20,185 || INFO || Killing behavior CyclicBehaviour/HandleSubtask with exit code: None
+2025-07-08 02:11:20,187 || INFO || Killing behavior CyclicBehaviour/ReceiveWorkerResponse with exit code: None
+2025-07-08 03:10:20,012 || WARNING || Keyboard interrupt received. Stopping SPADE...
+2025-07-08 03:12:44,687 || WARNING || Keyboard interrupt received. Stopping SPADE...
+2025-07-08 03:13:21,313 || INFO || Authentication failed: not-authorized
+2025-07-08 03:13:21,314 || ERROR || No appropriate login method.
+2025-07-08 03:13:21,316 || ERROR || Exception in the event loop: Could not authenticate the agent. Check user and password or use auto_register=True
+2025-07-08 03:13:21,318 || INFO || connection_lost: (None,)
+2025-07-08 03:14:03,320 || INFO || Authentication failed: not-authorized
+2025-07-08 03:14:03,322 || ERROR || No appropriate login method.
+2025-07-08 03:14:03,323 || ERROR || Exception in the event loop: Could not authenticate the agent. Check user and password or use auto_register=True
+2025-07-08 03:14:03,326 || INFO || connection_lost: (None,)
+2025-07-08 12:34:00,532 || INFO || Authentication failed: not-authorized
+2025-07-08 12:34:00,533 || ERROR || No appropriate login method.
+2025-07-08 12:34:00,533 || ERROR || Exception in the event loop: Could not authenticate the agent. Check user and password or use auto_register=True
+2025-07-08 12:34:00,535 || INFO || connection_lost: (None,)
+2025-07-08 12:39:04,035 || INFO || Authentication failed: not-authorized
+2025-07-08 12:39:04,035 || ERROR || No appropriate login method.
+2025-07-08 12:39:04,036 || ERROR || Exception in the event loop: Could not authenticate the agent. Check user and password or use auto_register=True
+2025-07-08 12:39:04,038 || INFO || connection_lost: (None,)
+2025-07-08 12:39:27,894 || ERROR || Exception in the event loop: 'charmap' codec can't encode character '\u2705' in position 0: character maps to <undefined>
+2025-07-08 12:39:38,876 || INFO || Authentication failed: not-authorized
+2025-07-08 12:39:38,877 || ERROR || No appropriate login method.
+2025-07-08 12:39:38,877 || ERROR || Exception in the event loop: Could not authenticate the agent. Check user and password or use auto_register=True
+2025-07-08 12:39:38,879 || INFO || connection_lost: (None,)
+2025-07-08 12:48:38,070 || ERROR || Exception in the event loop: Agent.__init__() got an unexpected keyword argument 'auto_register'
+2025-07-08 12:49:58,173 || INFO || Authentication failed: not-authorized
+2025-07-08 12:49:58,174 || ERROR || No appropriate login method.
+2025-07-08 12:49:58,175 || ERROR || Exception in the event loop: Could not authenticate the agent. Check user and password or use auto_register=True
+2025-07-08 12:49:58,176 || INFO || connection_lost: (None,)
+2025-07-08 12:54:17,837 || ERROR || Exception in the event loop: Agent.__init__() got an unexpected keyword argument 'auto_register'
+2025-07-08 12:55:17,804 || INFO || Authentication failed: not-authorized
+2025-07-08 12:55:17,805 || ERROR || No appropriate login method.
+2025-07-08 12:55:17,806 || ERROR || Exception in the event loop: Could not authenticate the agent. Check user and password or use auto_register=True
+2025-07-08 12:55:17,807 || INFO || connection_lost: (None,)
+2025-07-08 13:02:27,729 || INFO || JID set to: stock_worker@localhost/mZHq3Nfd
+2025-07-08 13:02:27,732 || INFO || [StockPriceAgent] Agent stock_worker@localhost starting...
+2025-07-08 13:02:27,949 || INFO || Authentication failed: not-authorized
+2025-07-08 13:02:27,949 || ERROR || No appropriate login method.
+2025-07-08 13:02:27,951 || ERROR || Exception in the event loop: Could not authenticate the agent. Check user and password or use auto_register=True
+2025-07-08 13:02:27,953 || INFO || Killing behavior CyclicBehaviour/HandleStockPriceRequest with exit code: None
+2025-07-08 13:02:27,953 || INFO || connection_lost: (None,)
+2025-07-08 13:02:27,957 || INFO || connection_lost: (None,)
+2025-07-08 13:02:27,958 || INFO || Killing behavior CyclicBehaviour/HandleStockPriceRequest with exit code: None
+2025-07-08 13:07:25,362 || INFO || Authentication failed: not-authorized
+2025-07-08 13:07:25,363 || ERROR || No appropriate login method.
+2025-07-08 13:07:25,364 || ERROR || Exception in the event loop: Could not authenticate the agent. Check user and password or use auto_register=True
+2025-07-08 13:07:25,366 || INFO || connection_lost: (None,)
+2025-07-08 13:14:37,643 || INFO || Authentication failed: not-authorized
+2025-07-08 13:14:37,645 || ERROR || No appropriate login method.
+2025-07-08 13:14:37,646 || ERROR || Exception in the event loop: Could not authenticate the agent. Check user and password or use auto_register=True
+2025-07-08 13:14:37,648 || INFO || connection_lost: (None,)
+2025-07-08 15:24:07,400 || INFO || Authentication failed: not-authorized
+2025-07-08 15:24:07,401 || ERROR || No appropriate login method.
+2025-07-08 15:26:53,617 || INFO || Authentication failed: not-authorized
+2025-07-08 15:26:53,618 || ERROR || No appropriate login method.
+2025-07-08 15:38:59,826 || INFO || Authentication failed: not-authorized
+2025-07-08 15:38:59,827 || ERROR || No appropriate login method.
+2025-07-08 15:41:48,473 || INFO || Authentication failed: not-authorized
+2025-07-08 15:41:48,474 || ERROR || No appropriate login method.
+2025-07-08 15:44:50,704 || INFO || Authentication failed: not-authorized
+2025-07-08 15:44:50,705 || ERROR || No appropriate login method.
+2025-07-08 15:44:50,706 || INFO || Authentication failed: not-authorized
+2025-07-08 15:44:50,706 || ERROR || No appropriate login method.
+2025-07-08 15:44:50,706 || INFO || Authentication failed: not-authorized
+2025-07-08 15:44:50,706 || ERROR || No appropriate login method.
+2025-07-08 15:44:50,706 || INFO || Authentication failed: not-authorized
+2025-07-08 15:44:50,706 || ERROR || No appropriate login method.
+2025-07-08 15:44:50,707 || INFO || connection_lost: (None,)
+2025-07-08 15:44:50,709 || INFO || connection_lost: (None,)
+2025-07-08 15:44:50,710 || INFO || connection_lost: (None,)
+2025-07-08 15:44:50,710 || INFO || connection_lost: (None,)
+2025-07-08 15:50:29,546 || INFO || connection_lost: (None,)
+2025-07-08 15:50:29,548 || INFO || connection_lost: (None,)
+2025-07-08 15:54:42,305 || INFO || connection_lost: (None,)
+2025-07-08 15:54:42,311 || INFO || connection_lost: (None,)
+2025-07-08 15:54:42,311 || INFO || Authentication failed: not-authorized
+2025-07-08 15:54:42,312 || ERROR || No appropriate login method.
+2025-07-08 15:54:42,313 || INFO || Authentication failed: not-authorized
+2025-07-08 15:54:42,313 || ERROR || No appropriate login method.
+2025-07-08 15:54:42,455 || ERROR || Task was destroyed but it is pending!
+task: <Task pending name='Task-22' coro=<XMLStream._end_stream_wait() running at D:\samsungprism\venv\Lib\site-packages\slixmpp\xmlstream\xmlstream.py:730> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+2025-07-08 15:54:42,455 || ERROR || Task was destroyed but it is pending!
+task: <Task pending name='Task-23' coro=<XMLStream._end_stream_wait() running at D:\samsungprism\venv\Lib\site-packages\slixmpp\xmlstream\xmlstream.py:730> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+2025-07-08 16:19:09,325 || INFO || connection_lost: (None,)
+2025-07-08 16:19:09,328 || INFO || connection_lost: (None,)
+2025-07-08 16:21:51,900 || INFO || connection_lost: (None,)
+2025-07-08 16:21:51,902 || INFO || connection_lost: (None,)
+2025-07-08 16:49:48,123 || INFO || connection_lost: (None,)
+2025-07-08 16:49:48,124 || INFO || connection_lost: (None,)
+2025-07-08 17:03:36,523 || INFO || Authentication failed: not-authorized
+2025-07-08 17:03:36,525 || ERROR || No appropriate login method.
+2025-07-08 17:03:36,526 || INFO || Authentication failed: not-authorized
+2025-07-08 17:03:36,526 || ERROR || No appropriate login method.
+2025-07-08 17:03:36,527 || INFO || Authentication failed: not-authorized
+2025-07-08 17:03:36,528 || ERROR || No appropriate login method.
+2025-07-08 17:03:36,528 || INFO || connection_lost: (None,)
+2025-07-08 17:03:36,530 || INFO || connection_lost: (None,)
+2025-07-08 17:03:36,531 || INFO || connection_lost: (None,)
+2025-07-08 17:03:36,531 || INFO || Authentication failed: not-authorized
+2025-07-08 17:03:36,532 || ERROR || No appropriate login method.
+2025-07-08 17:03:36,532 || INFO || Authentication failed: not-authorized
+2025-07-08 17:03:36,532 || ERROR || No appropriate login method.
+2025-07-08 17:18:13,114 || INFO || JID set to: sentiment_worker@localhost/gGJS3fzg
+2025-07-08 17:18:13,122 || INFO || JID set to: historical_data_worker@localhost/Ec5Nb2fl
+2025-07-08 17:18:13,123 || INFO || JID set to: portfolio_worker@localhost/-A1vA2j1
+2025-07-08 17:18:13,124 || INFO || JID set to: stock_worker@localhost/FhhG5-rL
+2025-07-08 17:18:13,124 || INFO || JID set to: financial_news_worker@localhost/1SsmKIoh
+2025-07-08 17:18:13,126 || INFO || [HistoricalDataAgent] Agent historical_data_worker@localhost setup initiated.
+2025-07-08 17:18:13,126 || INFO || [HistoricalDataAgent] Presence set to available.
+2025-07-08 17:18:13,127 || INFO || [HistoricalDataAgent] Service registered.
+2025-07-08 17:18:13,128 || INFO || [PortfolioAnalysisAgent] Presence set to available.
+2025-07-08 17:18:13,128 || INFO || [PortfolioAnalysisAgent] Service registered.
+2025-07-08 17:18:13,129 || INFO || [StockPriceAgent] Agent stock_worker@localhost starting...
+2025-07-08 17:18:13,129 || INFO || [FinancialNewsAgent] Agent financial_news_worker@localhost initialized.
+2025-07-08 17:18:13,130 || INFO || [FinancialNewsAgent] Presence set to available.
+2025-07-08 17:18:13,130 || INFO || [FinancialNewsAgent] Service registered.
+2025-07-08 17:18:16,235 || INFO || JID set to: manager@localhost/5Us1STnK
+2025-07-08 17:18:16,240 || ERROR || Exception running behaviour OneShotBehaviour/SimulateClientRequest: 'parameters'
+2025-07-08 17:18:16,243 || ERROR || Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+    await self._run()
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+    await self.run()
+  File "D:\samsungprism\agents\manager.py", line 101, in run
+    "parameters": intent["parameters"],
+                  ~~~~~~^^^^^^^^^^^^^^
+KeyError: 'parameters'
+
+2025-07-08 17:18:16,243 || INFO || Killing behavior OneShotBehaviour/SimulateClientRequest with exit code: 'parameters'
+2025-07-08 17:18:16,243 || INFO || Killing behavior OneShotBehaviour/SimulateClientRequest with exit code: None
+2025-07-08 17:18:18,043 || INFO || HTTP Request: GET https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=TSLA&apikey=POFEW0Q1VCNTQ4GS "HTTP/1.1 200 OK"
+2025-07-08 17:20:47,291 || ERROR || Task was destroyed but it is pending!
+task: <Task cancelling name='Task-31' coro=<CyclicBehaviour._start() running at D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py:140> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:820]>
+2025-07-08 17:20:47,292 || ERROR || Task was destroyed but it is pending!
+task: <Task cancelling name='Task-27' coro=<CyclicBehaviour._start() running at D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py:140> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:820]>
+2025-07-08 17:20:47,294 || ERROR || Task was destroyed but it is pending!
+task: <Task cancelling name='Task-37' coro=<CyclicBehaviour._start() running at D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py:140> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:820]>
+2025-07-08 17:20:47,294 || ERROR || Task was destroyed but it is pending!
+task: <Task cancelling name='Task-30' coro=<CyclicBehaviour._start() running at D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py:140> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:820]>
+2025-07-08 17:20:47,294 || ERROR || Task was destroyed but it is pending!
+task: <Task cancelling name='Task-29' coro=<CyclicBehaviour._start() running at D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py:140> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:820]>
+2025-07-08 17:20:47,294 || ERROR || Task was destroyed but it is pending!
+task: <Task cancelling name='Task-28' coro=<CyclicBehaviour._start() running at D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py:140> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:820]>
+2025-07-08 17:20:47,295 || ERROR || Exception running behaviour CyclicBehaviour/HandleFinancialNewsRequest: Event loop is closed
+2025-07-08 17:20:47,295 || ERROR || Traceback (most recent call last):
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 186, in get
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+    await self._run()
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+    await self.run()
+  File "D:\samsungprism\agents\financial_news_agent.py", line 45, in run
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 359, in receive
+    msg = await asyncio.wait_for(coro, timeout=timeout)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 188, in get
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 827, in call_soon
+    self._check_closed()
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 550, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+2025-07-08 17:20:47,295 || INFO || Killing behavior CyclicBehaviour/HandleFinancialNewsRequest with exit code: Event loop is closed
+2025-07-08 17:20:47,295 || INFO || Killing behavior CyclicBehaviour/HandleFinancialNewsRequest with exit code: None
+2025-07-08 17:20:47,296 || ERROR || Exception running behaviour CyclicBehaviour/HandleSentimentRequest: Event loop is closed
+2025-07-08 17:20:47,296 || ERROR || Traceback (most recent call last):
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 186, in get
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+    await self._run()
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+    await self.run()
+  File "D:\samsungprism\agents\newsag.py", line 45, in run
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 359, in receive
+    msg = await asyncio.wait_for(coro, timeout=timeout)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 188, in get
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 827, in call_soon
+    self._check_closed()
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 550, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+2025-07-08 17:20:47,296 || INFO || Killing behavior CyclicBehaviour/HandleSentimentRequest with exit code: Event loop is closed
+2025-07-08 17:20:47,296 || INFO || Killing behavior CyclicBehaviour/HandleSentimentRequest with exit code: None
+2025-07-08 17:20:47,296 || ERROR || Exception running behaviour CyclicBehaviour/ReceiveWorkerResponse: Event loop is closed
+2025-07-08 17:20:47,297 || ERROR || Traceback (most recent call last):
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 186, in get
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+    await self._run()
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+    await self.run()
+  File "D:\samsungprism\agents\manager.py", line 111, in run
+    msg = await self.receive(timeout=10)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 359, in receive
+    msg = await asyncio.wait_for(coro, timeout=timeout)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 188, in get
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 827, in call_soon
+    self._check_closed()
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 550, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+2025-07-08 17:20:47,297 || INFO || Killing behavior CyclicBehaviour/ReceiveWorkerResponse with exit code: Event loop is closed
+2025-07-08 17:20:47,297 || INFO || Killing behavior CyclicBehaviour/ReceiveWorkerResponse with exit code: None
+2025-07-08 17:20:47,298 || ERROR || Exception running behaviour CyclicBehaviour/HandleStockPriceRequest: Event loop is closed
+2025-07-08 17:20:47,298 || ERROR || Traceback (most recent call last):
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 186, in get
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+    await self._run()
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+    await self.run()
+  File "D:\samsungprism\agents\stockpriceag.py", line 47, in run
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 359, in receive
+    msg = await asyncio.wait_for(coro, timeout=timeout)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 188, in get
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 827, in call_soon
+    self._check_closed()
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 550, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+2025-07-08 17:20:47,298 || INFO || Killing behavior CyclicBehaviour/HandleStockPriceRequest with exit code: Event loop is closed
+2025-07-08 17:20:47,298 || INFO || Killing behavior CyclicBehaviour/HandleStockPriceRequest with exit code: None
+2025-07-08 17:20:47,298 || ERROR || Exception running behaviour CyclicBehaviour/HandlePortfolioAnalysisRequest: Event loop is closed
+2025-07-08 17:20:47,299 || ERROR || Traceback (most recent call last):
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 186, in get
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+    await self._run()
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+    await self.run()
+  File "D:\samsungprism\agents\portfolio_analysis_agent.py", line 48, in run
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 359, in receive
+    msg = await asyncio.wait_for(coro, timeout=timeout)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 188, in get
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 827, in call_soon
+    self._check_closed()
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 550, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+2025-07-08 17:20:47,299 || INFO || Killing behavior CyclicBehaviour/HandlePortfolioAnalysisRequest with exit code: Event loop is closed
+2025-07-08 17:20:47,299 || INFO || Killing behavior CyclicBehaviour/HandlePortfolioAnalysisRequest with exit code: None
+2025-07-08 17:20:47,299 || ERROR || Exception running behaviour CyclicBehaviour/HandleHistoricalDataRequest: Event loop is closed
+2025-07-08 17:20:47,299 || ERROR || Traceback (most recent call last):
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 186, in get
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+    await self._run()
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+    await self.run()
+  File "D:\samsungprism\agents\historical_data_agent.py", line 46, in run
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 359, in receive
+    msg = await asyncio.wait_for(coro, timeout=timeout)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 188, in get
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 827, in call_soon
+    self._check_closed()
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 550, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+2025-07-08 17:20:47,300 || INFO || Killing behavior CyclicBehaviour/HandleHistoricalDataRequest with exit code: Event loop is closed
+2025-07-08 17:20:47,300 || INFO || Killing behavior CyclicBehaviour/HandleHistoricalDataRequest with exit code: None
+2025-07-08 17:20:59,767 || INFO || JID set to: stock_worker@localhost/gRWl5xYe
+2025-07-08 17:20:59,773 || INFO || [StockPriceAgent] Agent stock_worker@localhost starting...
+2025-07-08 17:20:59,788 || INFO || JID set to: sentiment_worker@localhost/ZmYmHPc2
+2025-07-08 17:20:59,789 || INFO || JID set to: financial_news_worker@localhost/L9vPjlOn
+2025-07-08 17:20:59,789 || INFO || JID set to: portfolio_worker@localhost/ARmPrrd6
+2025-07-08 17:20:59,790 || INFO || JID set to: historical_data_worker@localhost/GM38wRn9
+2025-07-08 17:20:59,798 || INFO || [FinancialNewsAgent] Agent financial_news_worker@localhost initialized.
+2025-07-08 17:20:59,799 || INFO || [FinancialNewsAgent] Presence set to available.
+2025-07-08 17:20:59,799 || INFO || [FinancialNewsAgent] Service registered.
+2025-07-08 17:20:59,801 || INFO || [PortfolioAnalysisAgent] Presence set to available.
+2025-07-08 17:20:59,801 || INFO || [PortfolioAnalysisAgent] Service registered.
+2025-07-08 17:20:59,802 || INFO || [HistoricalDataAgent] Agent historical_data_worker@localhost setup initiated.
+2025-07-08 17:20:59,803 || INFO || [HistoricalDataAgent] Presence set to available.
+2025-07-08 17:20:59,804 || INFO || [HistoricalDataAgent] Service registered.
+2025-07-08 17:21:02,918 || INFO || JID set to: manager@localhost/cXtJb0Li
+2025-07-08 17:21:02,922 || ERROR || Exception running behaviour OneShotBehaviour/SimulateClientRequest: 'parameters'
+2025-07-08 17:21:02,923 || ERROR || Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+    await self._run()
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+    await self.run()
+  File "D:\samsungprism\agents\manager.py", line 101, in run
+    "parameters": intent["parameters"],
+                  ~~~~~~^^^^^^^^^^^^^^
+KeyError: 'parameters'
+
+2025-07-08 17:21:02,923 || INFO || Killing behavior OneShotBehaviour/SimulateClientRequest with exit code: 'parameters'
+2025-07-08 17:21:02,923 || INFO || Killing behavior OneShotBehaviour/SimulateClientRequest with exit code: None
+2025-07-08 17:21:03,859 || INFO || HTTP Request: GET https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=TSLA&apikey=POFEW0Q1VCNTQ4GS "HTTP/1.1 200 OK"
+2025-07-08 17:21:03,862 || INFO || [StockPriceAgent] Successfully processed task req_001_stock_price for intent 'get_stock_price'
+2025-07-08 17:23:44,085 || ERROR || Task was destroyed but it is pending!
+task: <Task cancelling name='Task-37' coro=<CyclicBehaviour._start() running at D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py:140> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:820]>
+2025-07-08 17:23:44,086 || ERROR || Task was destroyed but it is pending!
+task: <Task cancelling name='Task-29' coro=<CyclicBehaviour._start() running at D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py:140> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:820]>
+2025-07-08 17:23:44,086 || ERROR || Task was destroyed but it is pending!
+task: <Task cancelling name='Task-28' coro=<CyclicBehaviour._start() running at D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py:140> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:820]>
+2025-07-08 17:23:44,086 || ERROR || Task was destroyed but it is pending!
+task: <Task cancelling name='Task-27' coro=<CyclicBehaviour._start() running at D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py:140> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:820]>
+2025-07-08 17:23:44,086 || ERROR || Task was destroyed but it is pending!
+task: <Task cancelling name='Task-30' coro=<CyclicBehaviour._start() running at D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py:140> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:820]>
+2025-07-08 17:23:44,086 || ERROR || Task was destroyed but it is pending!
+task: <Task cancelling name='Task-31' coro=<CyclicBehaviour._start() running at D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py:140> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:820]>
+2025-07-08 17:23:44,087 || ERROR || Exception running behaviour CyclicBehaviour/ReceiveWorkerResponse: Event loop is closed
+2025-07-08 17:23:44,087 || ERROR || Traceback (most recent call last):
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 186, in get
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+    await self._run()
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+    await self.run()
+  File "D:\samsungprism\agents\manager.py", line 111, in run
+    msg = await self.receive(timeout=10)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 359, in receive
+    msg = await asyncio.wait_for(coro, timeout=timeout)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 188, in get
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 827, in call_soon
+    self._check_closed()
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 550, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+2025-07-08 17:23:44,087 || INFO || Killing behavior CyclicBehaviour/ReceiveWorkerResponse with exit code: Event loop is closed
+2025-07-08 17:23:44,087 || INFO || Killing behavior CyclicBehaviour/ReceiveWorkerResponse with exit code: None
+2025-07-08 17:23:44,087 || ERROR || Exception running behaviour CyclicBehaviour/HandleFinancialNewsRequest: Event loop is closed
+2025-07-08 17:23:44,088 || ERROR || Traceback (most recent call last):
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 186, in get
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+    await self._run()
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+    await self.run()
+  File "D:\samsungprism\agents\financial_news_agent.py", line 45, in run
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 359, in receive
+    msg = await asyncio.wait_for(coro, timeout=timeout)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 188, in get
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 827, in call_soon
+    self._check_closed()
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 550, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+2025-07-08 17:23:44,088 || INFO || Killing behavior CyclicBehaviour/HandleFinancialNewsRequest with exit code: Event loop is closed
+2025-07-08 17:23:44,088 || INFO || Killing behavior CyclicBehaviour/HandleFinancialNewsRequest with exit code: None
+2025-07-08 17:23:44,088 || ERROR || Exception running behaviour CyclicBehaviour/HandleSentimentRequest: Event loop is closed
+2025-07-08 17:23:44,089 || ERROR || Traceback (most recent call last):
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 186, in get
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+    await self._run()
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+    await self.run()
+  File "D:\samsungprism\agents\newsag.py", line 45, in run
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 359, in receive
+    msg = await asyncio.wait_for(coro, timeout=timeout)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 188, in get
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 827, in call_soon
+    self._check_closed()
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 550, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+2025-07-08 17:23:44,089 || INFO || Killing behavior CyclicBehaviour/HandleSentimentRequest with exit code: Event loop is closed
+2025-07-08 17:23:44,089 || INFO || Killing behavior CyclicBehaviour/HandleSentimentRequest with exit code: None
+2025-07-08 17:23:44,089 || ERROR || Exception running behaviour CyclicBehaviour/HandleStockPriceRequest: Event loop is closed
+2025-07-08 17:23:44,089 || ERROR || Traceback (most recent call last):
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 186, in get
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+    await self._run()
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+    await self.run()
+  File "D:\samsungprism\agents\stockpriceag.py", line 47, in run
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 359, in receive
+    msg = await asyncio.wait_for(coro, timeout=timeout)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 188, in get
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 827, in call_soon
+    self._check_closed()
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 550, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+2025-07-08 17:23:44,089 || INFO || Killing behavior CyclicBehaviour/HandleStockPriceRequest with exit code: Event loop is closed
+2025-07-08 17:23:44,089 || INFO || Killing behavior CyclicBehaviour/HandleStockPriceRequest with exit code: None
+2025-07-08 17:23:44,089 || ERROR || Exception running behaviour CyclicBehaviour/HandlePortfolioAnalysisRequest: Event loop is closed
+2025-07-08 17:23:44,090 || ERROR || Traceback (most recent call last):
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 186, in get
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+    await self._run()
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+    await self.run()
+  File "D:\samsungprism\agents\portfolio_analysis_agent.py", line 48, in run
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 359, in receive
+    msg = await asyncio.wait_for(coro, timeout=timeout)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 188, in get
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 827, in call_soon
+    self._check_closed()
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 550, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+2025-07-08 17:23:44,090 || INFO || Killing behavior CyclicBehaviour/HandlePortfolioAnalysisRequest with exit code: Event loop is closed
+2025-07-08 17:23:44,090 || INFO || Killing behavior CyclicBehaviour/HandlePortfolioAnalysisRequest with exit code: None
+2025-07-08 17:23:44,090 || ERROR || Exception running behaviour CyclicBehaviour/HandleHistoricalDataRequest: Event loop is closed
+2025-07-08 17:23:44,090 || ERROR || Traceback (most recent call last):
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 186, in get
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+    await self._run()
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+    await self.run()
+  File "D:\samsungprism\agents\historical_data_agent.py", line 46, in run
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 359, in receive
+    msg = await asyncio.wait_for(coro, timeout=timeout)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 188, in get
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 827, in call_soon
+    self._check_closed()
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 550, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+2025-07-08 17:23:44,091 || INFO || Killing behavior CyclicBehaviour/HandleHistoricalDataRequest with exit code: Event loop is closed
+2025-07-08 17:23:44,091 || INFO || Killing behavior CyclicBehaviour/HandleHistoricalDataRequest with exit code: None
+2025-07-08 17:32:32,196 || INFO || JID set to: financial_news_worker@localhost/eqr3iPAv
+2025-07-08 17:32:32,198 || INFO || JID set to: portfolio_worker@localhost/NDAugH98
+2025-07-08 17:32:32,200 || INFO || [FinancialNewsAgent] Agent financial_news_worker@localhost initialized.
+2025-07-08 17:32:32,200 || INFO || [FinancialNewsAgent] Presence set to available.
+2025-07-08 17:32:32,201 || INFO || [FinancialNewsAgent] Service registered.
+2025-07-08 17:32:32,202 || INFO || [PortfolioAnalysisAgent] Presence set to available.
+2025-07-08 17:32:32,203 || INFO || [PortfolioAnalysisAgent] Service registered.
+2025-07-08 17:32:32,209 || INFO || JID set to: historical_data_worker@localhost/YUIuhrgR
+2025-07-08 17:32:32,210 || INFO || JID set to: sentiment_worker@localhost/ERLmhd8Z
+2025-07-08 17:32:32,213 || INFO || [HistoricalDataAgent] Agent historical_data_worker@localhost setup initiated.
+2025-07-08 17:32:32,214 || INFO || [HistoricalDataAgent] Presence set to available.
+2025-07-08 17:32:32,214 || INFO || [HistoricalDataAgent] Service registered.
+2025-07-08 17:32:32,217 || INFO || JID set to: stock_worker@localhost/NYQ8h7U_
+2025-07-08 17:32:32,219 || INFO || [StockPriceAgent] Agent stock_worker@localhost starting...
+2025-07-08 17:32:35,322 || INFO || JID set to: manager@localhost/vG8vIOoz
+2025-07-08 17:32:35,326 || WARNING || No behaviour matched for message: <message to="portfolio_worker@localhost" from="manager@localhost" thread="None" metadata={'performative': 'request', 'ontology': 'finance-task'}>
+{"protocol": "finance_mcp", "version": "1.0", "type": "subtask_request", "task_id": "req_001_analyze_portfolio", "parent_task": "req_001", "intent": "analyze_portfolio", "parameters": {"portfolio": [{"symbol": "TSLA", "shares": 3}, {"symbol": "AAPL", "shares": 5}, {"symbol": "GOOGL", "shares": 2}]}, "reply_to": "manager@localhost", "timestamp": "2025-07-08T12:02:35.325992"}
+</message>
+2025-07-08 17:32:35,327 || INFO || Killing behavior OneShotBehaviour/SimulateClientRequest with exit code: None
+2025-07-08 17:32:35,684 || INFO || [FinancialNewsAgent] Received task from manager@localhost: {'protocol': 'finance_mcp', 'version': '1.0', 'type': 'subtask_request', 'task_id': 'req_001_financial_news', 'parent_task': 'req_001', 'intent': 'get_financial_news', 'parameters': {'company': 'Tesla'}, 'reply_to': 'manager@localhost', 'timestamp': '2025-07-08T12:02:35.326587'}
+2025-07-08 17:32:35,684 || INFO || [FinancialNewsAgent] Simulating news fetch for 'None' (limit: 1)
+2025-07-08 17:32:35,684 || INFO || [FinancialNewsAgent] Simulated financial news for 'None'
+2025-07-08 17:32:35,684 || INFO || [FinancialNewsAgent] Sent response to manager@localhost with status: success
+2025-07-08 17:32:35,684 || INFO || [HistoricalDataAgent] Received task from manager@localhost: {'protocol': 'finance_mcp', 'version': '1.0', 'type': 'subtask_request', 'task_id': 'req_001_historical_data', 'parent_task': 'req_001', 'intent': 'get_historical_data', 'parameters': {'symbol': 'TSLA', 'period': '1y', 'data_points': 100}, 'reply_to': 'manager@localhost', 'timestamp': '2025-07-08T12:02:35.327043'}
+2025-07-08 17:32:35,684 || ERROR || [HistoricalDataAgent] Exception occurred: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "D:\samsungprism\agents\historical_data_agent.py", line 52, in run
+    intent = data.get("intent", {}).get("parameters", {})
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+2025-07-08 17:32:36,072 || INFO || HTTP Request: GET https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=TSLA&apikey=POFEW0Q1VCNTQ4GS "HTTP/1.1 200 OK"
+2025-07-08 17:32:36,076 || INFO || [StockPriceAgent] Successfully processed task req_001_stock_price for intent 'get_stock_price'
+2025-07-08 17:35:00,492 || ERROR || Task was destroyed but it is pending!
+task: <Task cancelling name='Task-27' coro=<CyclicBehaviour._start() running at D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py:140> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:820]>
+2025-07-08 17:35:00,493 || ERROR || Task was destroyed but it is pending!
+task: <Task cancelling name='Task-29' coro=<CyclicBehaviour._start() running at D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py:140> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:820]>
+2025-07-08 17:35:00,493 || ERROR || Task was destroyed but it is pending!
+task: <Task cancelling name='Task-31' coro=<CyclicBehaviour._start() running at D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py:140> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:820]>
+2025-07-08 17:35:00,493 || ERROR || Task was destroyed but it is pending!
+task: <Task cancelling name='Task-26' coro=<CyclicBehaviour._start() running at D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py:140> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:820]>
+2025-07-08 17:35:00,493 || ERROR || Task was destroyed but it is pending!
+task: <Task cancelling name='Task-30' coro=<CyclicBehaviour._start() running at D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py:140> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:820]>
+2025-07-08 17:35:00,493 || ERROR || Task was destroyed but it is pending!
+task: <Task cancelling name='Task-37' coro=<CyclicBehaviour._start() running at D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py:140> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:820]>
+2025-07-08 17:35:00,493 || ERROR || Exception running behaviour CyclicBehaviour/HandlePortfolioAnalysisRequest: Event loop is closed
+2025-07-08 17:35:00,494 || ERROR || Traceback (most recent call last):
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 186, in get
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+  File "D:\samsungprism\agents\portfolio_analysis_agent.py", line 48, in run
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 359, in receive
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 188, in get
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 827, in call_soon
+    self._check_closed()
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 550, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+2025-07-08 17:35:00,494 || INFO || Killing behavior CyclicBehaviour/HandlePortfolioAnalysisRequest with exit code: Event loop is closed
+2025-07-08 17:35:00,494 || INFO || Killing behavior CyclicBehaviour/HandlePortfolioAnalysisRequest with exit code: None
+2025-07-08 17:35:00,494 || ERROR || Exception running behaviour CyclicBehaviour/HandleHistoricalDataRequest: Event loop is closed
+2025-07-08 17:35:00,495 || ERROR || Traceback (most recent call last):
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 186, in get
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+  File "D:\samsungprism\agents\historical_data_agent.py", line 46, in run
+    msg = await self.receive(timeout=10)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 359, in receive
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 188, in get
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 827, in call_soon
+    self._check_closed()
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 550, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+2025-07-08 17:35:00,495 || INFO || Killing behavior CyclicBehaviour/HandleHistoricalDataRequest with exit code: Event loop is closed
+2025-07-08 17:35:00,495 || INFO || Killing behavior CyclicBehaviour/HandleHistoricalDataRequest with exit code: None
+2025-07-08 17:35:00,495 || ERROR || Exception running behaviour CyclicBehaviour/HandleStockPriceRequest: Event loop is closed
+2025-07-08 17:35:00,495 || ERROR || Traceback (most recent call last):
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 186, in get
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+  File "D:\samsungprism\agents\stockpriceag.py", line 47, in run
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 359, in receive
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 188, in get
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 827, in call_soon
+    self._check_closed()
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 550, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+2025-07-08 17:35:00,495 || INFO || Killing behavior CyclicBehaviour/HandleStockPriceRequest with exit code: Event loop is closed
+2025-07-08 17:35:00,495 || INFO || Killing behavior CyclicBehaviour/HandleStockPriceRequest with exit code: None
+2025-07-08 17:35:00,496 || ERROR || Exception running behaviour CyclicBehaviour/HandleFinancialNewsRequest: Event loop is closed
+2025-07-08 17:35:00,496 || ERROR || Traceback (most recent call last):
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 186, in get
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+  File "D:\samsungprism\agents\financial_news_agent.py", line 45, in run
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 359, in receive
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 188, in get
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 827, in call_soon
+    self._check_closed()
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 550, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+2025-07-08 17:35:00,496 || INFO || Killing behavior CyclicBehaviour/HandleFinancialNewsRequest with exit code: Event loop is closed
+2025-07-08 17:35:00,496 || INFO || Killing behavior CyclicBehaviour/HandleFinancialNewsRequest with exit code: None
+2025-07-08 17:35:00,496 || ERROR || Exception running behaviour CyclicBehaviour/HandleSentimentRequest: Event loop is closed
+2025-07-08 17:35:00,496 || ERROR || Traceback (most recent call last):
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 186, in get
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+  File "D:\samsungprism\agents\newsag.py", line 45, in run
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 359, in receive
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 188, in get
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 827, in call_soon
+    self._check_closed()
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 550, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+2025-07-08 17:35:00,497 || INFO || Killing behavior CyclicBehaviour/HandleSentimentRequest with exit code: Event loop is closed
+2025-07-08 17:35:00,497 || INFO || Killing behavior CyclicBehaviour/HandleSentimentRequest with exit code: None
+2025-07-08 17:35:00,497 || ERROR || Exception running behaviour CyclicBehaviour/ReceiveWorkerResponse: Event loop is closed
+2025-07-08 17:35:00,497 || ERROR || Traceback (most recent call last):
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 186, in get
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+  File "D:\samsungprism\agents\manager.py", line 111, in run
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 359, in receive
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 188, in get
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 827, in call_soon
+    self._check_closed()
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 550, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+2025-07-08 17:35:00,497 || INFO || Killing behavior CyclicBehaviour/ReceiveWorkerResponse with exit code: Event loop is closed
+2025-07-08 17:35:00,497 || INFO || Killing behavior CyclicBehaviour/ReceiveWorkerResponse with exit code: None
+2025-07-08 17:36:54,892 || INFO || JID set to: historical_data_worker@localhost/qbNPoadG
+2025-07-08 17:36:54,895 || INFO || JID set to: sentiment_worker@localhost/vePGpdqQ
+2025-07-08 17:36:54,898 || INFO || [HistoricalDataAgent] Agent historical_data_worker@localhost setup initiated.
+2025-07-08 17:36:54,899 || INFO || [HistoricalDataAgent] Presence set to available.
+2025-07-08 17:36:54,899 || INFO || [HistoricalDataAgent] Service registered.
+2025-07-08 17:36:54,903 || INFO || JID set to: portfolio_worker@localhost/5_wTWJN8
+2025-07-08 17:36:54,905 || INFO || [PortfolioAnalysisAgent] Presence set to available.
+2025-07-08 17:36:54,906 || INFO || [PortfolioAnalysisAgent] Service registered.
+2025-07-08 17:36:54,910 || INFO || JID set to: financial_news_worker@localhost/OJBb9rmE
+2025-07-08 17:36:54,911 || INFO || JID set to: stock_worker@localhost/0rUVmKbA
+2025-07-08 17:36:54,915 || INFO || [FinancialNewsAgent] Agent financial_news_worker@localhost initialized.
+2025-07-08 17:36:54,916 || INFO || [FinancialNewsAgent] Presence set to available.
+2025-07-08 17:36:54,917 || INFO || [FinancialNewsAgent] Service registered.
+2025-07-08 17:36:54,918 || INFO || [StockPriceAgent] Agent stock_worker@localhost starting...
+2025-07-08 17:36:58,035 || INFO || JID set to: manager@localhost/t2dk6ctv
+2025-07-08 17:36:58,038 || WARNING || No behaviour matched for message: <message to="portfolio_worker@localhost" from="manager@localhost" thread="None" metadata={'performative': 'request', 'ontology': 'finance-task'}>
+{"protocol": "finance_mcp", "version": "1.0", "type": "subtask_request", "task_id": "req_001_analyze_portfolio", "parent_task": "req_001", "intent": "analyze_portfolio", "parameters": {"portfolio": [{"symbol": "TSLA", "shares": 3}, {"symbol": "AAPL", "shares": 5}, {"symbol": "GOOGL", "shares": 2}]}, "reply_to": "manager@localhost", "timestamp": "2025-07-08T12:06:58.038495"}
+</message>
+2025-07-08 17:36:58,040 || INFO || Killing behavior OneShotBehaviour/SimulateClientRequest with exit code: None
+2025-07-08 17:36:58,397 || INFO || [FinancialNewsAgent] Received task from manager@localhost: {'protocol': 'finance_mcp', 'version': '1.0', 'type': 'subtask_request', 'task_id': 'req_001_financial_news', 'parent_task': 'req_001', 'intent': 'get_financial_news', 'parameters': {'company': 'Tesla'}, 'reply_to': 'manager@localhost', 'timestamp': '2025-07-08T12:06:58.039287'}
+2025-07-08 17:36:58,397 || INFO || [FinancialNewsAgent] Simulating news fetch for 'None' (limit: 1)
+2025-07-08 17:36:58,397 || INFO || [FinancialNewsAgent] Simulated financial news for 'None'
+2025-07-08 17:36:58,397 || INFO || [FinancialNewsAgent] Sent response to manager@localhost with status: success
+2025-07-08 17:36:58,777 || INFO || HTTP Request: GET https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=TSLA&apikey=POFEW0Q1VCNTQ4GS "HTTP/1.1 200 OK"
+2025-07-08 17:36:58,781 || INFO || [StockPriceAgent] Successfully processed task req_001_stock_price for intent 'get_stock_price'
+2025-07-08 17:40:55,998 || ERROR || Task was destroyed but it is pending!
+task: <Task cancelling name='Task-30' coro=<CyclicBehaviour._start() running at D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py:140> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:820]>
+2025-07-08 17:40:56,000 || ERROR || Task was destroyed but it is pending!
+task: <Task cancelling name='Task-28' coro=<CyclicBehaviour._start() running at D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py:140> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:820]>
+2025-07-08 17:40:56,000 || ERROR || Task was destroyed but it is pending!
+task: <Task cancelling name='Task-31' coro=<CyclicBehaviour._start() running at D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py:140> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:820]>
+2025-07-08 17:40:56,000 || ERROR || Task was destroyed but it is pending!
+task: <Task cancelling name='Task-37' coro=<CyclicBehaviour._start() running at D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py:140> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:820]>
+2025-07-08 17:40:56,000 || ERROR || Task was destroyed but it is pending!
+task: <Task cancelling name='Task-29' coro=<CyclicBehaviour._start() running at D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py:140> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:820]>
+2025-07-08 17:40:56,000 || ERROR || Task was destroyed but it is pending!
+task: <Task cancelling name='Task-27' coro=<CyclicBehaviour._start() running at D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py:140> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:820]>
+2025-07-08 17:40:56,001 || ERROR || Exception running behaviour CyclicBehaviour/HandleFinancialNewsRequest: Event loop is closed
+2025-07-08 17:40:56,002 || ERROR || Traceback (most recent call last):
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 186, in get
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+  File "D:\samsungprism\agents\financial_news_agent.py", line 45, in run
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 359, in receive
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 188, in get
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 827, in call_soon
+    self._check_closed()
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 550, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+2025-07-08 17:40:56,002 || INFO || Killing behavior CyclicBehaviour/HandleFinancialNewsRequest with exit code: Event loop is closed
+2025-07-08 17:40:56,002 || INFO || Killing behavior CyclicBehaviour/HandleFinancialNewsRequest with exit code: None
+2025-07-08 17:40:56,002 || ERROR || Exception running behaviour CyclicBehaviour/HandleSentimentRequest: Event loop is closed
+2025-07-08 17:40:56,003 || ERROR || Traceback (most recent call last):
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 186, in get
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+  File "D:\samsungprism\agents\newsag.py", line 45, in run
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 359, in receive
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 188, in get
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 827, in call_soon
+    self._check_closed()
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 550, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+2025-07-08 17:40:56,003 || INFO || Killing behavior CyclicBehaviour/HandleSentimentRequest with exit code: Event loop is closed
+2025-07-08 17:40:56,003 || INFO || Killing behavior CyclicBehaviour/HandleSentimentRequest with exit code: None
+2025-07-08 17:40:56,003 || ERROR || Exception running behaviour CyclicBehaviour/HandleStockPriceRequest: Event loop is closed
+2025-07-08 17:40:56,003 || ERROR || Traceback (most recent call last):
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 186, in get
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+  File "D:\samsungprism\agents\stockpriceag.py", line 47, in run
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 359, in receive
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 188, in get
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 827, in call_soon
+    self._check_closed()
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 550, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+2025-07-08 17:40:56,004 || INFO || Killing behavior CyclicBehaviour/HandleStockPriceRequest with exit code: Event loop is closed
+2025-07-08 17:40:56,004 || INFO || Killing behavior CyclicBehaviour/HandleStockPriceRequest with exit code: None
+2025-07-08 17:40:56,004 || ERROR || Exception running behaviour CyclicBehaviour/ReceiveWorkerResponse: Event loop is closed
+2025-07-08 17:40:56,005 || ERROR || Traceback (most recent call last):
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 186, in get
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+  File "D:\samsungprism\agents\manager.py", line 111, in run
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 359, in receive
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 188, in get
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 827, in call_soon
+    self._check_closed()
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 550, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+2025-07-08 17:40:56,005 || INFO || Killing behavior CyclicBehaviour/ReceiveWorkerResponse with exit code: Event loop is closed
+2025-07-08 17:40:56,005 || INFO || Killing behavior CyclicBehaviour/ReceiveWorkerResponse with exit code: None
+2025-07-08 17:40:56,005 || ERROR || Exception running behaviour CyclicBehaviour/HandlePortfolioAnalysisRequest: Event loop is closed
+2025-07-08 17:40:56,005 || ERROR || Traceback (most recent call last):
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 186, in get
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+  File "D:\samsungprism\agents\portfolio_analysis_agent.py", line 48, in run
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 359, in receive
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 188, in get
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 827, in call_soon
+    self._check_closed()
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 550, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+2025-07-08 17:40:56,005 || INFO || Killing behavior CyclicBehaviour/HandlePortfolioAnalysisRequest with exit code: Event loop is closed
+2025-07-08 17:40:56,005 || INFO || Killing behavior CyclicBehaviour/HandlePortfolioAnalysisRequest with exit code: None
+2025-07-08 17:40:56,006 || ERROR || Exception running behaviour CyclicBehaviour/HandleHistoricalDataRequest: Event loop is closed
+2025-07-08 17:40:56,006 || ERROR || Traceback (most recent call last):
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 186, in get
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+  File "D:\samsungprism\agents\historical_data_agent.py", line 46, in run
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 359, in receive
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 188, in get
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 827, in call_soon
+    self._check_closed()
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 550, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+2025-07-08 17:40:56,006 || INFO || Killing behavior CyclicBehaviour/HandleHistoricalDataRequest with exit code: Event loop is closed
+2025-07-08 17:40:56,006 || INFO || Killing behavior CyclicBehaviour/HandleHistoricalDataRequest with exit code: None
+2025-07-08 17:52:51,715 || INFO || JID set to: sentiment_worker@localhost/CW0ULRHI
+2025-07-08 17:52:51,718 || INFO || JID set to: historical_data_worker@localhost/zV5Gg5on
+2025-07-08 17:52:51,719 || INFO || JID set to: financial_news_worker@localhost/VWuM7DxX
+2025-07-08 17:52:51,724 || INFO || [HistoricalDataAgent] Agent historical_data_worker@localhost setup initiated.
+2025-07-08 17:52:51,724 || INFO || [HistoricalDataAgent] Presence set to available.
+2025-07-08 17:52:51,725 || INFO || [HistoricalDataAgent] Service registered.
+2025-07-08 17:52:51,725 || INFO || [FinancialNewsAgent] Agent financial_news_worker@localhost initialized.
+2025-07-08 17:52:51,726 || INFO || [FinancialNewsAgent] Presence set to available.
+2025-07-08 17:52:51,726 || INFO || [FinancialNewsAgent] Service registered.
+2025-07-08 17:52:51,728 || INFO || JID set to: stock_worker@localhost/sz_7FaDA
+2025-07-08 17:52:51,730 || INFO || JID set to: portfolio_worker@localhost/iGKTjSO_
+2025-07-08 17:52:51,733 || INFO || [StockPriceAgent] Agent stock_worker@localhost starting...
+2025-07-08 17:52:51,735 || INFO || [PortfolioAnalysisAgent] Presence set to available.
+2025-07-08 17:52:51,737 || INFO || [PortfolioAnalysisAgent] Service registered.
+2025-07-08 17:52:54,851 || INFO || JID set to: manager@localhost/VH5j7F8q
+2025-07-08 17:52:54,856 || INFO || Killing behavior OneShotBehaviour/SimulateClientRequest with exit code: None
+2025-07-08 17:52:55,273 || INFO || [PortfolioAnalysisAgent] Received request: {'protocol': 'finance_mcp', 'version': '1.0', 'type': 'subtask_request', 'task_id': 'req_001_analyze_portfolio', 'parent_task': 'req_001', 'intent': 'analyze_portfolio', 'parameters': {'portfolio': [{'symbol': 'TSLA', 'shares': 3}, {'symbol': 'AAPL', 'shares': 5}, {'symbol': 'GOOGL', 'shares': 2}]}, 'reply_to': 'manager@localhost', 'timestamp': '2025-07-08T12:22:54.854987'}
+2025-07-08 17:52:55,274 || INFO || [PortfolioAnalysisAgent] Analysis complete. Total value: 950.0
+2025-07-08 17:52:55,274 || INFO || [PortfolioAnalysisAgent] Successfully processed request req_001_analyze_portfolio for intent 'analyze_portfolio'
+2025-07-08 17:52:55,274 || INFO || [PortfolioAnalysisAgent] Response sent to manager@localhost (Status: success)
+2025-07-08 17:52:55,274 || INFO || [FinancialNewsAgent] Received task from manager@localhost: {'protocol': 'finance_mcp', 'version': '1.0', 'type': 'subtask_request', 'task_id': 'req_001_financial_news', 'parent_task': 'req_001', 'intent': 'get_financial_news', 'parameters': {'company': 'Tesla'}, 'reply_to': 'manager@localhost', 'timestamp': '2025-07-08T12:22:54.855375'}
+2025-07-08 17:52:55,275 || INFO || [FinancialNewsAgent] Simulating news fetch for 'None' (limit: 1)
+2025-07-08 17:52:55,275 || INFO || [FinancialNewsAgent] Simulated financial news for 'None'
+2025-07-08 17:52:55,275 || INFO || [FinancialNewsAgent] Sent response to manager@localhost with status: success
+2025-07-08 17:52:56,660 || INFO || HTTP Request: GET https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=TSLA&apikey=POFEW0Q1VCNTQ4GS "HTTP/1.1 200 OK"
+2025-07-08 17:52:56,663 || INFO || [StockPriceAgent] Successfully processed task req_001_stock_price for intent 'get_stock_price'
+2025-07-08 17:54:45,023 || ERROR || Task was destroyed but it is pending!
+task: <Task cancelling name='Task-29' coro=<CyclicBehaviour._start() running at D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py:140> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:820]>
+2025-07-08 17:54:45,024 || ERROR || Task was destroyed but it is pending!
+task: <Task cancelling name='Task-27' coro=<CyclicBehaviour._start() running at D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py:140> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:820]>
+2025-07-08 17:54:45,024 || ERROR || Task was destroyed but it is pending!
+task: <Task cancelling name='Task-37' coro=<CyclicBehaviour._start() running at D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py:140> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:820]>
+2025-07-08 17:54:45,024 || ERROR || Task was destroyed but it is pending!
+task: <Task cancelling name='Task-30' coro=<CyclicBehaviour._start() running at D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py:140> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:820]>
+2025-07-08 17:54:45,024 || ERROR || Task was destroyed but it is pending!
+task: <Task cancelling name='Task-31' coro=<CyclicBehaviour._start() running at D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py:140> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:820]>
+2025-07-08 17:54:45,024 || ERROR || Task was destroyed but it is pending!
+task: <Task cancelling name='Task-28' coro=<CyclicBehaviour._start() running at D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py:140> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:820]>
+2025-07-08 17:54:45,025 || ERROR || Exception running behaviour CyclicBehaviour/HandleFinancialNewsRequest: Event loop is closed
+2025-07-08 17:54:45,025 || ERROR || Traceback (most recent call last):
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 186, in get
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+  File "D:\samsungprism\agents\financial_news_agent.py", line 45, in run
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 359, in receive
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 188, in get
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 827, in call_soon
+    self._check_closed()
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 550, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+2025-07-08 17:54:45,026 || INFO || Killing behavior CyclicBehaviour/HandleFinancialNewsRequest with exit code: Event loop is closed
+2025-07-08 17:54:45,026 || INFO || Killing behavior CyclicBehaviour/HandleFinancialNewsRequest with exit code: None
+2025-07-08 17:54:45,026 || ERROR || Exception running behaviour CyclicBehaviour/HandleSentimentRequest: Event loop is closed
+2025-07-08 17:54:45,026 || ERROR || Traceback (most recent call last):
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 186, in get
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+  File "D:\samsungprism\agents\newsag.py", line 45, in run
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 359, in receive
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 188, in get
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 827, in call_soon
+    self._check_closed()
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 550, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+2025-07-08 17:54:45,026 || INFO || Killing behavior CyclicBehaviour/HandleSentimentRequest with exit code: Event loop is closed
+2025-07-08 17:54:45,026 || INFO || Killing behavior CyclicBehaviour/HandleSentimentRequest with exit code: None
+2025-07-08 17:54:45,026 || ERROR || Exception running behaviour CyclicBehaviour/ReceiveWorkerResponse: Event loop is closed
+2025-07-08 17:54:45,027 || ERROR || Traceback (most recent call last):
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 186, in get
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+  File "D:\samsungprism\agents\manager.py", line 111, in run
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 359, in receive
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 188, in get
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 827, in call_soon
+    self._check_closed()
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 550, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+2025-07-08 17:54:45,027 || INFO || Killing behavior CyclicBehaviour/ReceiveWorkerResponse with exit code: Event loop is closed
+2025-07-08 17:54:45,027 || INFO || Killing behavior CyclicBehaviour/ReceiveWorkerResponse with exit code: None
+2025-07-08 17:54:45,027 || ERROR || Exception running behaviour CyclicBehaviour/HandleStockPriceRequest: Event loop is closed
+2025-07-08 17:54:45,027 || ERROR || Traceback (most recent call last):
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 186, in get
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+  File "D:\samsungprism\agents\stockpriceag.py", line 47, in run
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 359, in receive
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 188, in get
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 827, in call_soon
+    self._check_closed()
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 550, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+2025-07-08 17:54:45,027 || INFO || Killing behavior CyclicBehaviour/HandleStockPriceRequest with exit code: Event loop is closed
+2025-07-08 17:54:45,028 || INFO || Killing behavior CyclicBehaviour/HandleStockPriceRequest with exit code: None
+2025-07-08 17:54:45,028 || ERROR || Exception running behaviour CyclicBehaviour/HandlePortfolioAnalysisRequest: Event loop is closed
+2025-07-08 17:54:45,028 || ERROR || Traceback (most recent call last):
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 186, in get
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+  File "D:\samsungprism\agents\portfolio_analysis_agent.py", line 49, in run
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 359, in receive
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 188, in get
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 827, in call_soon
+    self._check_closed()
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 550, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+2025-07-08 17:54:45,028 || INFO || Killing behavior CyclicBehaviour/HandlePortfolioAnalysisRequest with exit code: Event loop is closed
+2025-07-08 17:54:45,028 || INFO || Killing behavior CyclicBehaviour/HandlePortfolioAnalysisRequest with exit code: None
+2025-07-08 17:54:45,028 || ERROR || Exception running behaviour CyclicBehaviour/HandleHistoricalDataRequest: Event loop is closed
+2025-07-08 17:54:45,028 || ERROR || Traceback (most recent call last):
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 186, in get
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+  File "D:\samsungprism\agents\historical_data_agent.py", line 46, in run
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 359, in receive
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 188, in get
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 827, in call_soon
+    self._check_closed()
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 550, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+2025-07-08 17:54:45,028 || INFO || Killing behavior CyclicBehaviour/HandleHistoricalDataRequest with exit code: Event loop is closed
+2025-07-08 17:54:45,028 || INFO || Killing behavior CyclicBehaviour/HandleHistoricalDataRequest with exit code: None
+2025-07-08 17:54:45,029 || ERROR || Task was destroyed but it is pending!
+task: <Task pending name='Task-64' coro=<XEP_0199._keepalive() running at D:\samsungprism\venv\Lib\site-packages\slixmpp\plugins\xep_0199\ping.py:143> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+2025-07-08 17:54:45,029 || ERROR || Task was destroyed but it is pending!
+task: <Task pending name='Task-65' coro=<XEP_0199._keepalive() running at D:\samsungprism\venv\Lib\site-packages\slixmpp\plugins\xep_0199\ping.py:143> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+2025-07-08 17:54:45,029 || ERROR || Task was destroyed but it is pending!
+task: <Task pending name='Task-66' coro=<XEP_0199._keepalive() running at D:\samsungprism\venv\Lib\site-packages\slixmpp\plugins\xep_0199\ping.py:143> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+2025-07-08 17:54:45,029 || ERROR || Task was destroyed but it is pending!
+task: <Task pending name='Task-67' coro=<XEP_0199._keepalive() running at D:\samsungprism\venv\Lib\site-packages\slixmpp\plugins\xep_0199\ping.py:143> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+2025-07-08 17:54:45,029 || ERROR || Task was destroyed but it is pending!
+task: <Task pending name='Task-68' coro=<XEP_0199._keepalive() running at D:\samsungprism\venv\Lib\site-packages\slixmpp\plugins\xep_0199\ping.py:143> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+2025-07-08 18:19:39,125 || INFO || JID set to: historical_data_worker@localhost/AwEshzSf
+2025-07-08 18:19:39,129 || INFO || [HistoricalDataAgent] Agent historical_data_worker@localhost setup initiated.
+2025-07-08 18:19:39,130 || INFO || [HistoricalDataAgent] Presence set to available.
+2025-07-08 18:19:39,130 || INFO || [HistoricalDataAgent] Service registered.
+2025-07-08 18:19:39,141 || INFO || JID set to: financial_news_worker@localhost/NN_-H5hN
+2025-07-08 18:19:39,142 || INFO || JID set to: sentiment_worker@localhost/sVKF7M5d
+2025-07-08 18:19:39,143 || INFO || JID set to: portfolio_worker@localhost/e_hVdv9v
+2025-07-08 18:19:39,145 || INFO || JID set to: stock_worker@localhost/svJ0-4O4
+2025-07-08 18:19:39,151 || INFO || [FinancialNewsAgent] Agent financial_news_worker@localhost initialized.
+2025-07-08 18:19:39,151 || INFO || [FinancialNewsAgent] Presence set to available.
+2025-07-08 18:19:39,152 || INFO || [FinancialNewsAgent] Service registered.
+2025-07-08 18:19:39,157 || INFO || [PortfolioAnalysisAgent] Presence set to available.
+2025-07-08 18:19:39,157 || INFO || [PortfolioAnalysisAgent] Service registered.
+2025-07-08 18:19:39,158 || INFO || [StockPriceAgent] Agent stock_worker@localhost starting...
+2025-07-08 18:19:42,287 || INFO || JID set to: manager@localhost/LxnTHMWl
+2025-07-08 18:19:42,292 || INFO || Killing behavior OneShotBehaviour/SimulateClientRequest with exit code: None
+2025-07-08 18:19:42,698 || INFO || [PortfolioAnalysisAgent] Received request: {'protocol': 'finance_mcp', 'version': '1.0', 'type': 'subtask_request', 'task_id': 'req_001_analyze_portfolio', 'parent_task': 'req_001', 'intent': 'analyze_portfolio', 'parameters': {'portfolio': [{'symbol': 'TSLA', 'shares': 3}, {'symbol': 'AAPL', 'shares': 5}, {'symbol': 'GOOGL', 'shares': 2}]}, 'reply_to': 'manager@localhost', 'timestamp': '2025-07-08T12:49:42.291725'}
+2025-07-08 18:19:42,699 || INFO || [PortfolioAnalysisAgent] Analysis complete. Total value: 950.0
+2025-07-08 18:19:42,699 || INFO || [PortfolioAnalysisAgent] Successfully processed request req_001_analyze_portfolio for intent 'analyze_portfolio'
+2025-07-08 18:19:42,699 || INFO || [PortfolioAnalysisAgent] Response sent to manager@localhost (Status: success)
+2025-07-08 18:19:42,700 || INFO || [FinancialNewsAgent] Received task from manager@localhost: {'protocol': 'finance_mcp', 'version': '1.0', 'type': 'subtask_request', 'task_id': 'req_001_financial_news', 'parent_task': 'req_001', 'intent': 'get_financial_news', 'parameters': {'company': 'Tesla'}, 'reply_to': 'manager@localhost', 'timestamp': '2025-07-08T12:49:42.292147'}
+2025-07-08 18:19:42,700 || INFO || [FinancialNewsAgent] Simulating news fetch for 'None' (limit: 1)
+2025-07-08 18:19:42,700 || INFO || [FinancialNewsAgent] Simulated financial news for 'None'
+2025-07-08 18:19:42,700 || INFO || [FinancialNewsAgent] Sent response to manager@localhost with status: success
+2025-07-08 18:19:44,086 || INFO || HTTP Request: GET https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=TSLA&apikey=POFEW0Q1VCNTQ4GS "HTTP/1.1 200 OK"
+2025-07-08 18:19:44,090 || INFO || [StockPriceAgent] Successfully processed task req_001_stock_price for intent 'get_stock_price'
+2025-07-08 18:20:09,573 || ERROR || Task was destroyed but it is pending!
+task: <Task cancelling name='Task-28' coro=<CyclicBehaviour._start() running at D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py:140> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:820]>
+2025-07-08 18:20:09,573 || ERROR || Task was destroyed but it is pending!
+task: <Task cancelling name='Task-29' coro=<CyclicBehaviour._start() running at D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py:140> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:820]>
+2025-07-08 18:20:09,573 || ERROR || Task was destroyed but it is pending!
+task: <Task cancelling name='Task-37' coro=<CyclicBehaviour._start() running at D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py:140> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:820]>
+2025-07-08 18:20:09,573 || ERROR || Task was destroyed but it is pending!
+task: <Task cancelling name='Task-31' coro=<CyclicBehaviour._start() running at D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py:140> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:820]>
+2025-07-08 18:20:09,573 || ERROR || Task was destroyed but it is pending!
+task: <Task cancelling name='Task-30' coro=<CyclicBehaviour._start() running at D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py:140> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:820]>
+2025-07-08 18:20:09,573 || ERROR || Task was destroyed but it is pending!
+task: <Task cancelling name='Task-27' coro=<CyclicBehaviour._start() running at D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py:140> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:820]>
+2025-07-08 18:20:09,574 || ERROR || Exception running behaviour CyclicBehaviour/HandleFinancialNewsRequest: Event loop is closed
+2025-07-08 18:20:09,574 || ERROR || Traceback (most recent call last):
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 186, in get
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+  File "D:\samsungprism\agents\financial_news_agent.py", line 45, in run
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 359, in receive
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 188, in get
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 827, in call_soon
+    self._check_closed()
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 550, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+2025-07-08 18:20:09,574 || INFO || Killing behavior CyclicBehaviour/HandleFinancialNewsRequest with exit code: Event loop is closed
+2025-07-08 18:20:09,574 || INFO || Killing behavior CyclicBehaviour/HandleFinancialNewsRequest with exit code: None
+2025-07-08 18:20:09,574 || ERROR || Exception running behaviour CyclicBehaviour/HandleSentimentRequest: Event loop is closed
+2025-07-08 18:20:09,574 || ERROR || Traceback (most recent call last):
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 186, in get
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+  File "D:\samsungprism\agents\newsag.py", line 45, in run
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 359, in receive
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 188, in get
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 827, in call_soon
+    self._check_closed()
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 550, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+2025-07-08 18:20:09,575 || INFO || Killing behavior CyclicBehaviour/HandleSentimentRequest with exit code: Event loop is closed
+2025-07-08 18:20:09,575 || INFO || Killing behavior CyclicBehaviour/HandleSentimentRequest with exit code: None
+2025-07-08 18:20:09,575 || ERROR || Exception running behaviour CyclicBehaviour/ReceiveWorkerResponse: Event loop is closed
+2025-07-08 18:20:09,575 || ERROR || Traceback (most recent call last):
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 186, in get
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+  File "D:\samsungprism\agents\manager.py", line 111, in run
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 359, in receive
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 188, in get
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 827, in call_soon
+    self._check_closed()
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 550, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+2025-07-08 18:20:09,575 || INFO || Killing behavior CyclicBehaviour/ReceiveWorkerResponse with exit code: Event loop is closed
+2025-07-08 18:20:09,575 || INFO || Killing behavior CyclicBehaviour/ReceiveWorkerResponse with exit code: None
+2025-07-08 18:20:09,575 || ERROR || Exception running behaviour CyclicBehaviour/HandleStockPriceRequest: Event loop is closed
+2025-07-08 18:20:09,575 || ERROR || Traceback (most recent call last):
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 186, in get
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+  File "D:\samsungprism\agents\stockpriceag.py", line 47, in run
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 359, in receive
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 188, in get
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 827, in call_soon
+    self._check_closed()
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 550, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+2025-07-08 18:20:09,575 || INFO || Killing behavior CyclicBehaviour/HandleStockPriceRequest with exit code: Event loop is closed
+2025-07-08 18:20:09,575 || INFO || Killing behavior CyclicBehaviour/HandleStockPriceRequest with exit code: None
+2025-07-08 18:20:09,576 || ERROR || Exception running behaviour CyclicBehaviour/HandlePortfolioAnalysisRequest: Event loop is closed
+2025-07-08 18:20:09,576 || ERROR || Traceback (most recent call last):
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 186, in get
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+  File "D:\samsungprism\agents\portfolio_analysis_agent.py", line 48, in run
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 359, in receive
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 188, in get
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 827, in call_soon
+    self._check_closed()
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 550, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+2025-07-08 18:20:09,576 || INFO || Killing behavior CyclicBehaviour/HandlePortfolioAnalysisRequest with exit code: Event loop is closed
+2025-07-08 18:20:09,576 || INFO || Killing behavior CyclicBehaviour/HandlePortfolioAnalysisRequest with exit code: None
+2025-07-08 18:20:09,576 || ERROR || Exception running behaviour CyclicBehaviour/HandleHistoricalDataRequest: Event loop is closed
+2025-07-08 18:20:09,576 || ERROR || Traceback (most recent call last):
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 186, in get
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+  File "D:\samsungprism\agents\historical_data_agent.py", line 46, in run
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 359, in receive
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 188, in get
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 827, in call_soon
+    self._check_closed()
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 550, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+2025-07-08 18:20:09,576 || INFO || Killing behavior CyclicBehaviour/HandleHistoricalDataRequest with exit code: Event loop is closed
+2025-07-08 18:20:09,576 || INFO || Killing behavior CyclicBehaviour/HandleHistoricalDataRequest with exit code: None
+2025-07-08 18:20:37,363 || INFO || JID set to: stock_worker@localhost/rS7LjfLf
+2025-07-08 18:20:37,365 || INFO || [StockPriceAgent] Agent stock_worker@localhost starting...
+2025-07-08 18:20:37,368 || INFO || JID set to: sentiment_worker@localhost/DTGsQz8u
+2025-07-08 18:20:37,369 || INFO || JID set to: portfolio_worker@localhost/96iEf_us
+2025-07-08 18:20:37,369 || INFO || JID set to: historical_data_worker@localhost/Z3qZSY5u
+2025-07-08 18:20:37,369 || INFO || JID set to: financial_news_worker@localhost/z5wQCOXV
+2025-07-08 18:20:37,372 || INFO || [PortfolioAnalysisAgent] Presence set to available.
+2025-07-08 18:20:37,372 || INFO || [PortfolioAnalysisAgent] Service registered.
+2025-07-08 18:20:37,372 || INFO || [HistoricalDataAgent] Agent historical_data_worker@localhost setup initiated.
+2025-07-08 18:20:37,373 || INFO || [HistoricalDataAgent] Presence set to available.
+2025-07-08 18:20:37,373 || INFO || [HistoricalDataAgent] Service registered.
+2025-07-08 18:20:37,373 || INFO || [FinancialNewsAgent] Agent financial_news_worker@localhost initialized.
+2025-07-08 18:20:37,373 || INFO || [FinancialNewsAgent] Presence set to available.
+2025-07-08 18:20:37,373 || INFO || [FinancialNewsAgent] Service registered.
+2025-07-08 18:20:40,484 || INFO || JID set to: manager@localhost/EbXI4mcF
+2025-07-08 18:20:40,490 || INFO || Killing behavior OneShotBehaviour/SimulateClientRequest with exit code: None
+2025-07-08 18:20:40,825 || INFO || [PortfolioAnalysisAgent] Received request: {'protocol': 'finance_mcp', 'version': '1.0', 'type': 'subtask_request', 'task_id': 'req_001_analyze_portfolio', 'parent_task': 'req_001', 'intent': 'analyze_portfolio', 'parameters': {'portfolio': [{'symbol': 'TSLA', 'shares': 3}, {'symbol': 'AAPL', 'shares': 5}, {'symbol': 'GOOGL', 'shares': 2}]}, 'reply_to': 'manager@localhost', 'timestamp': '2025-07-08T12:50:40.489016'}
+2025-07-08 18:20:40,826 || INFO || [PortfolioAnalysisAgent] Analysis complete. Total value: 950.0
+2025-07-08 18:20:40,826 || INFO || [PortfolioAnalysisAgent] Successfully processed request req_001_analyze_portfolio for intent 'analyze_portfolio'
+2025-07-08 18:20:40,826 || INFO || [PortfolioAnalysisAgent] Response sent to manager@localhost (Status: success)
+2025-07-08 18:20:40,826 || INFO || [FinancialNewsAgent] Received task from manager@localhost: {'protocol': 'finance_mcp', 'version': '1.0', 'type': 'subtask_request', 'task_id': 'req_001_financial_news', 'parent_task': 'req_001', 'intent': 'get_financial_news', 'parameters': {'company': 'Tesla'}, 'reply_to': 'manager@localhost', 'timestamp': '2025-07-08T12:50:40.489764'}
+2025-07-08 18:20:40,826 || INFO || [FinancialNewsAgent] Simulating news fetch for 'None' (limit: 1)
+2025-07-08 18:20:40,826 || INFO || [FinancialNewsAgent] Simulated financial news for 'None'
+2025-07-08 18:20:40,826 || INFO || [FinancialNewsAgent] Sent response to manager@localhost with status: success
+2025-07-08 18:20:42,007 || INFO || HTTP Request: GET https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=TSLA&apikey=POFEW0Q1VCNTQ4GS "HTTP/1.1 200 OK"
+2025-07-08 18:20:42,008 || INFO || [StockPriceAgent] Successfully processed task req_001_stock_price for intent 'get_stock_price'
+2025-07-08 18:22:05,926 || INFO || JID set to: portfolio_worker@localhost/oQ3lh-eN
+2025-07-08 18:22:05,927 || INFO || JID set to: sentiment_worker@localhost/EoT2LM0H
+2025-07-08 18:22:05,928 || INFO || [PortfolioAnalysisAgent] Presence set to available.
+2025-07-08 18:22:05,928 || INFO || [PortfolioAnalysisAgent] Service registered.
+2025-07-08 18:22:05,929 || INFO || JID set to: historical_data_worker@localhost/V79LLOM4
+2025-07-08 18:22:05,929 || INFO || JID set to: stock_worker@localhost/omGwMkBs
+2025-07-08 18:22:05,930 || INFO || JID set to: financial_news_worker@localhost/AuseHeHb
+2025-07-08 18:22:05,931 || INFO || [HistoricalDataAgent] Agent historical_data_worker@localhost setup initiated.
+2025-07-08 18:22:05,931 || INFO || [HistoricalDataAgent] Presence set to available.
+2025-07-08 18:22:05,931 || INFO || [HistoricalDataAgent] Service registered.
+2025-07-08 18:22:05,931 || INFO || [StockPriceAgent] Agent stock_worker@localhost starting...
+2025-07-08 18:22:05,932 || INFO || [FinancialNewsAgent] Agent financial_news_worker@localhost initialized.
+2025-07-08 18:22:05,932 || INFO || [FinancialNewsAgent] Presence set to available.
+2025-07-08 18:22:05,933 || INFO || [FinancialNewsAgent] Service registered.
+2025-07-08 18:22:09,044 || INFO || JID set to: manager@localhost/zxKTajtR
+2025-07-08 18:22:09,048 || INFO || Killing behavior OneShotBehaviour/SimulateClientRequest with exit code: None
+2025-07-08 18:22:09,371 || INFO || [PortfolioAnalysisAgent] Received request: {'protocol': 'finance_mcp', 'version': '1.0', 'type': 'subtask_request', 'task_id': 'req_001_analyze_portfolio', 'parent_task': 'req_001', 'intent': 'analyze_portfolio', 'parameters': {'portfolio': [{'symbol': 'TSLA', 'shares': 3}, {'symbol': 'AAPL', 'shares': 5}, {'symbol': 'GOOGL', 'shares': 2}]}, 'reply_to': 'manager@localhost', 'timestamp': '2025-07-08T12:52:09.047595'}
+2025-07-08 18:22:09,371 || INFO || [PortfolioAnalysisAgent] Analysis complete. Total value: 950.0
+2025-07-08 18:22:09,371 || INFO || [PortfolioAnalysisAgent] Successfully processed request req_001_analyze_portfolio for intent 'analyze_portfolio'
+2025-07-08 18:22:09,371 || INFO || [PortfolioAnalysisAgent] Response sent to manager@localhost (Status: success)
+2025-07-08 18:22:09,372 || INFO || [FinancialNewsAgent] Received task from manager@localhost: {'protocol': 'finance_mcp', 'version': '1.0', 'type': 'subtask_request', 'task_id': 'req_001_financial_news', 'parent_task': 'req_001', 'intent': 'get_financial_news', 'parameters': {'company': 'Tesla'}, 'reply_to': 'manager@localhost', 'timestamp': '2025-07-08T12:52:09.048032'}
+2025-07-08 18:22:09,372 || INFO || [FinancialNewsAgent] Simulating news fetch for 'None' (limit: 1)
+2025-07-08 18:22:09,372 || INFO || [FinancialNewsAgent] Simulated financial news for 'None'
+2025-07-08 18:22:09,372 || INFO || [FinancialNewsAgent] Sent response to manager@localhost with status: success
+2025-07-08 18:22:10,634 || INFO || HTTP Request: GET https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=TSLA&apikey=POFEW0Q1VCNTQ4GS "HTTP/1.1 200 OK"
+2025-07-08 18:22:10,636 || INFO || [StockPriceAgent] Successfully processed task req_001_stock_price for intent 'get_stock_price'
+2025-07-10 15:50:25,101 || INFO || JID set to: historical_data_worker@localhost/LdLiaaSX
+2025-07-10 15:50:25,104 || INFO || [HistoricalDataAgent] Agent historical_data_worker@localhost setup initiated.
+2025-07-10 15:50:25,105 || INFO || [HistoricalDataAgent] Presence set to available.
+2025-07-10 15:50:25,105 || INFO || [HistoricalDataAgent] Service registered.
+2025-07-10 15:50:25,106 || INFO || JID set to: financial_news_worker@localhost/HnsXC3Cl
+2025-07-10 15:50:25,107 || INFO || JID set to: portfolio_worker@localhost/nOg0_QHv
+2025-07-10 15:50:25,108 || INFO || JID set to: sentiment_worker@localhost/Dqn-p2UG
+2025-07-10 15:50:25,109 || INFO || JID set to: stock_worker@localhost/QrMpDGal
+2025-07-10 15:50:25,110 || INFO || [FinancialNewsAgent] Agent financial_news_worker@localhost initialized.
+2025-07-10 15:50:25,111 || INFO || [FinancialNewsAgent] Presence set to available.
+2025-07-10 15:50:25,111 || INFO || [FinancialNewsAgent] Service registered.
+2025-07-10 15:50:25,111 || INFO || [PortfolioAnalysisAgent] Presence set to available.
+2025-07-10 15:50:25,113 || INFO || [PortfolioAnalysisAgent] Service registered.
+2025-07-10 15:50:25,114 || INFO || [StockPriceAgent] Agent stock_worker@localhost starting...
+2025-07-10 15:50:28,232 || INFO || JID set to: manager@localhost/bTDXsGHV
+2025-07-10 15:50:28,238 || INFO || Killing behavior OneShotBehaviour/SimulateClientRequest with exit code: None
+2025-07-10 15:50:28,676 || INFO || [PortfolioAnalysisAgent] Received request: {'protocol': 'finance_mcp', 'version': '1.0', 'type': 'subtask_request', 'task_id': 'req_001_analyze_portfolio', 'parent_task': 'req_001', 'intent': 'analyze_portfolio', 'parameters': {'portfolio': [{'symbol': 'TSLA', 'shares': 3}, {'symbol': 'AAPL', 'shares': 5}, {'symbol': 'GOOGL', 'shares': 2}]}, 'reply_to': 'manager@localhost', 'timestamp': '2025-07-10T10:20:28.236414'}
+2025-07-10 15:50:28,676 || INFO || [PortfolioAnalysisAgent] Analysis complete. Total value: 950.0
+2025-07-10 15:50:28,676 || INFO || [PortfolioAnalysisAgent] Successfully processed request req_001_analyze_portfolio for intent 'analyze_portfolio'
+2025-07-10 15:50:28,677 || INFO || [PortfolioAnalysisAgent] Response sent to manager@localhost (Status: success)
+2025-07-10 15:50:28,677 || INFO || [FinancialNewsAgent] Received task from manager@localhost: {'protocol': 'finance_mcp', 'version': '1.0', 'type': 'subtask_request', 'task_id': 'req_001_financial_news', 'parent_task': 'req_001', 'intent': 'get_financial_news', 'parameters': {'company': 'Tesla'}, 'reply_to': 'manager@localhost', 'timestamp': '2025-07-10T10:20:28.237081'}
+2025-07-10 15:50:28,677 || INFO || [FinancialNewsAgent] Simulating news fetch for 'None' (limit: 1)
+2025-07-10 15:50:28,677 || INFO || [FinancialNewsAgent] Simulated financial news for 'None'
+2025-07-10 15:50:28,677 || INFO || [FinancialNewsAgent] Sent response to manager@localhost with status: success
+2025-07-10 15:50:29,184 || INFO || HTTP Request: GET https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=TSLA&apikey=POFEW0Q1VCNTQ4GS "HTTP/1.1 200 OK"
+2025-07-10 15:50:29,186 || INFO || [StockPriceAgent] Successfully processed task req_001_stock_price for intent 'get_stock_price'
+2025-07-10 15:50:42,544 || ERROR || Task was destroyed but it is pending!
+task: <Task cancelling name='Task-28' coro=<CyclicBehaviour._start() running at D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py:140> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:820]>
+2025-07-10 15:50:42,545 || ERROR || Task was destroyed but it is pending!
+task: <Task cancelling name='Task-30' coro=<CyclicBehaviour._start() running at D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py:140> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:820]>
+2025-07-10 15:50:42,545 || ERROR || Task was destroyed but it is pending!
+task: <Task cancelling name='Task-37' coro=<CyclicBehaviour._start() running at D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py:140> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:820]>
+2025-07-10 15:50:42,545 || ERROR || Task was destroyed but it is pending!
+task: <Task cancelling name='Task-31' coro=<CyclicBehaviour._start() running at D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py:140> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:820]>
+2025-07-10 15:50:42,545 || ERROR || Task was destroyed but it is pending!
+task: <Task cancelling name='Task-29' coro=<CyclicBehaviour._start() running at D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py:140> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:820]>
+2025-07-10 15:50:42,545 || ERROR || Task was destroyed but it is pending!
+task: <Task cancelling name='Task-27' coro=<CyclicBehaviour._start() running at D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py:140> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py:820]>
+2025-07-10 15:50:42,545 || ERROR || Exception running behaviour CyclicBehaviour/HandleFinancialNewsRequest: Event loop is closed
+2025-07-10 15:50:42,545 || ERROR || Traceback (most recent call last):
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 186, in get
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+  File "D:\samsungprism\agents\financial_news_agent.py", line 45, in run
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 359, in receive
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 188, in get
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 827, in call_soon
+    self._check_closed()
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 550, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+2025-07-10 15:50:42,546 || INFO || Killing behavior CyclicBehaviour/HandleFinancialNewsRequest with exit code: Event loop is closed
+2025-07-10 15:50:42,546 || INFO || Killing behavior CyclicBehaviour/HandleFinancialNewsRequest with exit code: None
+2025-07-10 15:50:42,546 || ERROR || Exception running behaviour CyclicBehaviour/HandleSentimentRequest: Event loop is closed
+2025-07-10 15:50:42,546 || ERROR || Traceback (most recent call last):
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 186, in get
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+  File "D:\samsungprism\agents\newsag.py", line 45, in run
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 359, in receive
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 188, in get
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 827, in call_soon
+    self._check_closed()
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 550, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+2025-07-10 15:50:42,546 || INFO || Killing behavior CyclicBehaviour/HandleSentimentRequest with exit code: Event loop is closed
+2025-07-10 15:50:42,546 || INFO || Killing behavior CyclicBehaviour/HandleSentimentRequest with exit code: None
+2025-07-10 15:50:42,546 || ERROR || Exception running behaviour CyclicBehaviour/ReceiveWorkerResponse: Event loop is closed
+2025-07-10 15:50:42,547 || ERROR || Traceback (most recent call last):
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 186, in get
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+  File "D:\samsungprism\agents\manager.py", line 111, in run
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 359, in receive
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 188, in get
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 827, in call_soon
+    self._check_closed()
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 550, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+2025-07-10 15:50:42,547 || INFO || Killing behavior CyclicBehaviour/ReceiveWorkerResponse with exit code: Event loop is closed
+2025-07-10 15:50:42,547 || INFO || Killing behavior CyclicBehaviour/ReceiveWorkerResponse with exit code: None
+2025-07-10 15:50:42,547 || ERROR || Exception running behaviour CyclicBehaviour/HandleStockPriceRequest: Event loop is closed
+2025-07-10 15:50:42,547 || ERROR || Traceback (most recent call last):
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 186, in get
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+  File "D:\samsungprism\agents\stockpriceag.py", line 47, in run
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 359, in receive
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 188, in get
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 827, in call_soon
+    self._check_closed()
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 550, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+2025-07-10 15:50:42,547 || INFO || Killing behavior CyclicBehaviour/HandleStockPriceRequest with exit code: Event loop is closed
+2025-07-10 15:50:42,547 || INFO || Killing behavior CyclicBehaviour/HandleStockPriceRequest with exit code: None
+2025-07-10 15:50:42,547 || ERROR || Exception running behaviour CyclicBehaviour/HandlePortfolioAnalysisRequest: Event loop is closed
+2025-07-10 15:50:42,548 || ERROR || Traceback (most recent call last):
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 186, in get
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+  File "D:\samsungprism\agents\portfolio_analysis_agent.py", line 48, in run
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 359, in receive
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 188, in get
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 827, in call_soon
+    self._check_closed()
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 550, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+2025-07-10 15:50:42,548 || INFO || Killing behavior CyclicBehaviour/HandlePortfolioAnalysisRequest with exit code: Event loop is closed
+2025-07-10 15:50:42,548 || INFO || Killing behavior CyclicBehaviour/HandlePortfolioAnalysisRequest with exit code: None
+2025-07-10 15:50:42,548 || ERROR || Exception running behaviour CyclicBehaviour/HandleHistoricalDataRequest: Event loop is closed
+2025-07-10 15:50:42,548 || ERROR || Traceback (most recent call last):
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 186, in get
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 285, in _step
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 274, in _run
+  File "D:\samsungprism\agents\historical_data_agent.py", line 46, in run
+  File "D:\samsungprism\venv\Lib\site-packages\spade\behaviour.py", line 359, in receive
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\queues.py", line 188, in get
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 827, in call_soon
+    self._check_closed()
+  File "C:\Users\sinha\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 550, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+2025-07-10 15:50:42,548 || INFO || Killing behavior CyclicBehaviour/HandleHistoricalDataRequest with exit code: Event loop is closed
+2025-07-10 15:50:42,548 || INFO || Killing behavior CyclicBehaviour/HandleHistoricalDataRequest with exit code: None
+2025-07-10 16:14:20,403 || INFO || JID set to: sentiment_worker@localhost/ejCXOXZg
+2025-07-10 16:14:20,412 || INFO || JID set to: financial_news_worker@localhost/jTjjtoY9
+2025-07-10 16:14:20,415 || INFO || JID set to: portfolio_worker@localhost/Z_qmjq86
+2025-07-10 16:14:20,415 || INFO || JID set to: historical_data_worker@localhost/ILvyxFdV
+2025-07-10 16:14:20,416 || INFO || JID set to: stock_worker@localhost/6wJLpEL1
+2025-07-10 16:14:20,419 || INFO || [FinancialNewsAgent] Agent financial_news_worker@localhost initialized.
+2025-07-10 16:14:20,419 || INFO || [FinancialNewsAgent] Presence set to available.
+2025-07-10 16:14:20,420 || INFO || [FinancialNewsAgent] Service registered.
+2025-07-10 16:14:20,422 || INFO || [PortfolioAnalysisAgent] Presence set to available.
+2025-07-10 16:14:20,423 || INFO || [PortfolioAnalysisAgent] Service registered.
+2025-07-10 16:14:20,424 || INFO || [HistoricalDataAgent] Agent historical_data_worker@localhost setup initiated.
+2025-07-10 16:14:20,424 || INFO || [HistoricalDataAgent] Presence set to available.
+2025-07-10 16:14:20,425 || INFO || [HistoricalDataAgent] Service registered.
+2025-07-10 16:14:20,425 || INFO || [StockPriceAgent] Agent stock_worker@localhost starting...
+2025-07-10 16:14:23,838 || INFO || JID set to: manager@localhost/icE6yJP1
+2025-07-10 16:14:23,852 || INFO || Killing behavior OneShotBehaviour/SimulateClientRequest with exit code: None
+2025-07-10 16:14:25,097 || INFO || [PortfolioAnalysisAgent] Received request: {'protocol': 'finance_mcp', 'version': '1.0', 'type': 'subtask_request', 'task_id': 'req_001_analyze_portfolio', 'parent_task': 'req_001', 'intent': 'analyze_portfolio', 'parameters': {'portfolio': [{'symbol': 'TSLA', 'shares': 3}, {'symbol': 'AAPL', 'shares': 5}, {'symbol': 'GOOGL', 'shares': 2}]}, 'reply_to': 'manager@localhost', 'timestamp': '2025-07-10T10:44:23.849237'}
+2025-07-10 16:14:25,099 || INFO || [PortfolioAnalysisAgent] Analysis complete. Total value: 950.0
+2025-07-10 16:14:25,099 || INFO || [PortfolioAnalysisAgent] Successfully processed request req_001_analyze_portfolio for intent 'analyze_portfolio'
+2025-07-10 16:14:25,100 || INFO || [PortfolioAnalysisAgent] Response sent to manager@localhost (Status: success)
+2025-07-10 16:14:25,100 || INFO || [FinancialNewsAgent] Received task from manager@localhost: {'protocol': 'finance_mcp', 'version': '1.0', 'type': 'subtask_request', 'task_id': 'req_001_financial_news', 'parent_task': 'req_001', 'intent': 'get_financial_news', 'parameters': {'company': 'Tesla'}, 'reply_to': 'manager@localhost', 'timestamp': '2025-07-10T10:44:23.850287'}
+2025-07-10 16:14:25,101 || INFO || [FinancialNewsAgent] Simulating news fetch for 'None' (limit: 1)
+2025-07-10 16:14:25,101 || INFO || [FinancialNewsAgent] Simulated financial news for 'None'
+2025-07-10 16:14:25,101 || INFO || [FinancialNewsAgent] Sent response to manager@localhost with status: success
+2025-07-10 16:14:25,603 || INFO || HTTP Request: GET https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=TSLA&apikey=POFEW0Q1VCNTQ4GS "HTTP/1.1 200 OK"
+2025-07-10 16:14:25,607 || INFO || [StockPriceAgent] Successfully processed task req_001_stock_price for intent 'get_stock_price'
+2025-07-10 16:25:04,935 || INFO || connection_lost: (None,)
+2025-07-10 16:25:04,958 || INFO || connection_lost: (None,)
+2025-07-10 16:25:04,958 || INFO || connection_lost: (None,)
+2025-07-10 16:25:04,960 || INFO || connection_lost: (None,)
+2025-07-10 16:25:04,961 || INFO || connection_lost: (None,)
+2025-07-10 16:25:04,962 || INFO || connection_lost: (None,)
