@@ -15,14 +15,13 @@ load_dotenv()
 
 # Ensure the logs directory exists
 os.makedirs("logs", exist_ok=True)
-
-# Configure logging
 logging.basicConfig(
     filename="logs/stockpriceagent.log",
     level=logging.INFO,
     format="%(asctime)s || %(levelname)s || %(message)s"
 )
 logging.getLogger("spade.Agent").setLevel(logging.WARNING)
+
 ALPHA_VANTAGE_API_KEY = os.getenv("ALPHA_VANTAGE_API_KEY")
 STOCK_PRICE_WORKER_JID = os.getenv("STOCK_PRICE_WORKER_JID")
 STOCK_PRICE_WORKER_PASSWORD = os.getenv("STOCK_PRICE_WORKER_PASSWORD")
@@ -30,7 +29,6 @@ STOCK_PRICE_WORKER_PASSWORD = os.getenv("STOCK_PRICE_WORKER_PASSWORD")
 class StockPriceAgent(Agent):
     def __init__(self, jid, password, auto_register=True):
         super().__init__(jid, password)
-        # For future real API integration, if needed
         self._custom_auto_register = auto_register
 
     def _init_client(self):
@@ -38,7 +36,7 @@ class StockPriceAgent(Agent):
             self.jid,
             self.password,
             verify_security=False,
-            auto_register=self._custom_auto_register  # use this
+            auto_register=self._custom_auto_register  
         )
     
     
@@ -52,15 +50,16 @@ class StockPriceAgent(Agent):
 
                     intent = data.get("intent")
                     symbol = data["parameters"].get("symbol")
-                    task_id = data["task_id"]
-                    parent = data["parent_task"]
-                    reply_to = data["reply_to"]
+                    task_id = data.get("task_id")
+                    parent = data.get("parent_task")
+                    reply_to = data.get("reply_to")
+
                     result_data = None
                     status = "success"
                     error_info = None
 
                     if intent == "get_stock_price":
-                        print(f"[StockPriceAgent] Fetching stock price for {symbol}...")
+                        print(f"[StockPriceAgent] Fetching real-time stock price for {symbol}...")
                         try:
                             url = f"https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol={symbol}&apikey={ALPHA_VANTAGE_API_KEY}"
                             async with httpx.AsyncClient() as client:
@@ -68,24 +67,46 @@ class StockPriceAgent(Agent):
                                 response.raise_for_status()
                                 api_data = response.json()
 
-                            if "Global Quote" in api_data and api_data["Global Quote"]:
-                                price = api_data["Global Quote"].get("05. price")
+                            if "Global Quote" in api_data:
+                                quote = api_data["Global Quote"]
+                                price = quote.get("05. price")
                                 if price:
                                     result_data = {
                                         "symbol": symbol,
                                         "price": float(price)
                                     }
-                                    print(f"[StockPriceAgent] Price for {symbol}: {price}")
+                                    logging.info(f"[StockPriceAgent] Price for {symbol}: {price}")
                                 else:
                                     status = "failure"
-                                    error_info = {"code": "API_DATA_ERROR", "message": f"No price found for {symbol}"}
+                                    error_info = {
+                                        "code": "DATA_MISSING",
+                                        "message": f"Price missing in API response for {symbol}"
+                                    }
+                            elif "Error Message" in api_data:
+                                status = "failure"
+                                error_info = {
+                                    "code": "API_ERROR",
+                                    "message": api_data["Error Message"]
+                                }
                             else:
                                 status = "failure"
-                                error_info = {"code": "INVALID_RESPONSE", "message": "Unexpected API structure"}
+                                error_info = {
+                                    "code": "UNKNOWN_FORMAT",
+                                    "message": f"Unexpected response from Alpha Vantage"
+                                }
 
+                        except httpx.RequestError as e:
+                            status = "failure"
+                            error_info = {
+                                "code": "NETWORK_ERROR",
+                                "message": str(e)
+                            }
                         except Exception as e:
                             status = "failure"
-                            error_info = {"code": "EXCEPTION", "message": str(e)}
+                            error_info = {
+                                "code": "EXCEPTION",
+                                "message": str(e)
+                            }
 
                     else:
                         status = "failure"
@@ -112,10 +133,12 @@ class StockPriceAgent(Agent):
                     reply.set_metadata("performative", "inform" if status == "success" else "failure")
                     reply.set_metadata("ontology", "finance-task")
                     reply.body = json.dumps(reply_payload)
+
                     await self.send(reply)
+                    logging.info(f"[StockPriceAgent] Response sent to {reply_to} - Status: {status}")
 
                 except Exception as e:
-                    print(f"[StockPriceAgent] Internal Error: {e}")
+                    logging.exception(f"[StockPriceAgent] Unhandled exception: {e}")
 
     async def setup(self):
         print(f"[StockPriceAgent] Agent {str(self.jid)} starting...")
@@ -126,6 +149,7 @@ class StockPriceAgent(Agent):
         register_service("finance-data-provider", "get_stock_price", str(self.jid), {
             "description": "Provides real-time stock prices via Alpha Vantage"
         })
+        logging.info(f"[StockPriceAgent] Service registered in DF.")
 
         template = Template()
         template.set_metadata("performative", "request")

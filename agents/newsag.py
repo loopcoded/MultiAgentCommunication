@@ -1,3 +1,7 @@
+import os
+import asyncio
+import logging
+import httpx
 import json
 import datetime
 from spade.agent import Agent
@@ -5,31 +9,27 @@ from spade.behaviour import CyclicBehaviour
 from spade.message import Message
 from spade.template import Template
 from df_registry import register_service
-import spade
-from dotenv import load_dotenv
-import os
 from spade.xmpp_client import XMPPClient
-import asyncio
-import logging
+from dotenv import load_dotenv
+
 load_dotenv()
 
 # Ensure the logs directory exists
 os.makedirs("logs", exist_ok=True)
-
-# Configure logging
 logging.basicConfig(
-    filename="logs/newsagent.log",
+    filename="logs/news_sentiment_agent.log",
     level=logging.INFO,
     format="%(asctime)s || %(levelname)s || %(message)s"
 )
 logging.getLogger("spade.Agent").setLevel(logging.WARNING)
+
 NEWS_SENTIMENT_WORKER_JID = os.getenv('NEWS_SENTIMENT_WORKER_JID')
 NEWS_SENTIMENT_WORKER_PASSWORD = os.getenv('NEWS_SENTIMENT_WORKER_PASSWORD')
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 class NewsSentimentAgent(Agent):
     def __init__(self, jid, password,auto_register=True):
         super().__init__(jid, password)
-        # For future real API integration, if needed
         self._custom_auto_register = auto_register
 
     def _init_client(self):
@@ -37,7 +37,7 @@ class NewsSentimentAgent(Agent):
             self.jid,
             self.password,
             verify_security=False,
-            auto_register=self._custom_auto_register  # use this
+            auto_register=self._custom_auto_register 
         )
     
     class HandleSentimentRequest(CyclicBehaviour):
@@ -59,20 +59,35 @@ class NewsSentimentAgent(Agent):
                     error_info = None
 
                     if intent == "get_news_sentiment":
-                        print(f"[NewsSentimentAgent] Simulating LLM call for news sentiment of {company}...")
-
-                        if company == "ERROR_COMPANY":
-                            status = "failure"
-                            error_info = {
-                                "code": "LLM_API_ERROR",
-                                "message": f"Simulated LLM error for {company}"
+                        try:
+                            logging.info(f"[NewsSentimentAgent] Querying Gemini API for company: {company}")
+                            prompt = (
+                                f"Summarize the most recent financial news about {company} "
+                                "and determine the sentiment as 'positive', 'negative', or 'neutral'."
+                            )
+                            headers = {
+                                "Content-Type": "application/json",
+                                "X-goog-api-key": GEMINI_API_KEY
+                            } 
+                            payload = {
+                                "contents": [
+                                    {
+                                        "parts": [{"text": prompt}]
+                                    }
+                                ]
                             }
-                        else:
-                            simulated_llm_response_text = "Tesla's stock surges after strong Q2 delivery report. The overall sentiment is positive."
-                            sentiment = "positive" if "positive" in simulated_llm_response_text.lower() else \
-                                        "negative" if "negative" in simulated_llm_response_text.lower() else "neutral"
-                            summary = simulated_llm_response_text.split(". The overall sentiment is")[0] + "."
-                            confidence = 0.95
+                            url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent"
+                           
+                            async with httpx.AsyncClient() as client:
+                                response = await client.post(url, headers=headers, json=payload, timeout=20)
+                                response.raise_for_status()
+                                llm_response = response.json()
+
+                            generated = llm_response["candidates"][0]["content"]["parts"][0]["text"]
+                            sentiment = "positive" if "positive" in generated.lower() else \
+                                        "negative" if "negative" in generated.lower() else "neutral"
+                            summary = generated.split("The overall sentiment is")[0].strip().rstrip('.') + '.'
+                            confidence = 0.90  # Placeholder
 
                             result_data = {
                                 "sentiment": sentiment,
@@ -80,11 +95,28 @@ class NewsSentimentAgent(Agent):
                                 "summary": summary
                             }
 
+                            logging.info(f"[NewsSentimentAgent] Sentiment result: {sentiment} | Summary: {summary}")
+
+                        except httpx.HTTPStatusError as e:
+                            status = "failure"
+                            error_info = {
+                                "code": "GEMINI_HTTP_ERROR",
+                                "message": f"Gemini HTTP Error: {e.response.status_code} - {e.response.text}"
+                            }
+                            logging.error(f"[NewsSentimentAgent] HTTP error: {e}")
+                        except Exception as e:
+                            status = "failure"
+                            error_info = {
+                                "code": "GEMINI_EXCEPTION",
+                                "message": str(e)
+                            }
+                            logging.error(f"[NewsSentimentAgent] Unexpected error: {e}")
+
                     else:
                         status = "failure"
                         error_info = {
-                            "code": "UNEXPECTED_INTENT",
-                            "message": f"NewsSentimentAgent received unexpected intent: {intent}"
+                            "code": "INVALID_INTENT",
+                            "message": f"Unexpected intent: {intent}"
                         }
 
                     reply_mcp = {
@@ -95,7 +127,7 @@ class NewsSentimentAgent(Agent):
                         "parent_task": parent,
                         "intent": intent,
                         "status": status,
-                        "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat()
+                        "timestamp": datetime.datetime.utcnow().isoformat()
                     }
                     if status == "success":
                         reply_mcp["result"] = result_data
@@ -107,16 +139,17 @@ class NewsSentimentAgent(Agent):
                     reply.set_metadata("ontology", "finance-task")
                     reply.body = json.dumps(reply_mcp)
 
-                    print(f"[NewsSentimentAgent] Sending response back to {reply_to} (Status: {status})...")
                     await self.send(reply)
+                    logging.info(f"[NewsSentimentAgent] Response sent to {reply_to} | Status: {status}")
 
                 except json.JSONDecodeError:
-                    print(f"[NewsSentimentAgent] ERROR: Received malformed JSON from {msg.sender}: {msg.body}")
+                    logging.error(f"[NewsSentimentAgent] ERROR: Received malformed JSON from {msg.sender}: {msg.body}")
                 except Exception as e:
-                    print(f"[NewsSentimentAgent] Unexpected error: {e}")
+                    logging.error(f"[NewsSentimentAgent] Unexpected error: {e}")
 
     async def setup(self):
         print(f"[NewsSentimentAgent] Agent {str(self.jid)} ready.")
+        logging.info(f"[NewsSentimentAgent] Agent {str(self.jid)} initialized.")
         self.presence.set_available()
 
         register_service(
@@ -125,7 +158,7 @@ class NewsSentimentAgent(Agent):
             str(self.jid),
             {"description": "Provides news sentiment analysis using LLM"}
         )
-        print(f"[NewsSentimentAgent] Service registered in DF.")
+        logging.info(f"[NewsSentimentAgent] Service registered in DF.")
 
         template = Template()
         template.set_metadata("performative", "request")

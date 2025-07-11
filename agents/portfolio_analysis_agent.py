@@ -2,6 +2,7 @@ import asyncio
 import json
 import datetime
 import logging
+import httpx
 import os
 from spade.agent import Agent
 from spade.behaviour import CyclicBehaviour
@@ -23,15 +24,14 @@ logging.basicConfig(
 )
 logging.getLogger("spade.Agent").setLevel(logging.WARNING)
 
-# Define the agent's JID and password from environment variables
 PORTFOLIO_ANALYSIS_AGENT_JID = os.getenv("PORTFOLIO_ANALYSIS_AGENT_JID")
 PORTFOLIO_ANALYSIS_AGENT_PASSWORD = os.getenv("PORTFOLIO_ANALYSIS_AGENT_PASSWORD")
+ALPHA_VANTAGE_API_KEY = os.getenv("ALPHA_VANTAGE_API_KEY")
 
 # Define the PortfolioAnalysisAgent class
 class PortfolioAnalysisAgent(Agent):
     def __init__(self, jid, password, auto_register=True):
         super().__init__(jid, password)
-        # For future real API integration, if needed
         self._custom_auto_register = auto_register
 
     def _init_client(self):
@@ -51,6 +51,7 @@ class PortfolioAnalysisAgent(Agent):
                     data = json.loads(msg.body)
                     logging.info(f"[PortfolioAnalysisAgent] Received request: {data}")
                     print(f"[PortfolioAnalysisAgent] Received task from {msg.sender}: {data}")
+
                     intent = data.get("intent")
                     portfolio_items = data["parameters"].get("portfolio")
                     task_id = data["task_id"]
@@ -60,35 +61,55 @@ class PortfolioAnalysisAgent(Agent):
                     result_data = None
                     status = "success"
                     error_info = None
+                    total_value = 0.0
+                    detailed_holdings = []
 
                     if intent == "analyze_portfolio":
-                        total_value = 0.0
-                        detailed_holdings = []
-
-                        simulated_prices = {
-                            "GOOG": 175.00,
-                            "MSFT": 420.00,
-                            "AAPL": 190.00
-                        }
-
                         for item in portfolio_items:
                             symbol = item.get("symbol")
                             shares = item.get("shares")
-                            if symbol and shares is not None:
-                                price = simulated_prices.get(symbol, 0.0)
-                                value = price * shares
-                                total_value += value
-                                detailed_holdings.append({
-                                    "symbol": symbol,
-                                    "shares": shares,
-                                    "current_price": price,
-                                    "value": value
-                                })
-                            else:
+
+                            if not symbol or shares is None:
                                 status = "failure"
                                 error_info = {
                                     "code": "INVALID_PORTFOLIO_ITEM",
-                                    "message": f"Invalid item: {item}"
+                                    "message": f"Invalid portfolio item: {item}"
+                                }
+                                break
+
+                            try:
+                                url = f"https://www.alphavantage.co/query"
+                                params = {
+                                    "function": "GLOBAL_QUOTE",
+                                    "symbol": symbol,
+                                    "apikey": ALPHA_VANTAGE_API_KEY
+                                }
+
+                                async with httpx.AsyncClient() as client:
+                                    response = await client.get(url, params=params, timeout=5)
+                                    response.raise_for_status()
+                                    api_data = response.json()
+
+                                price_str = api_data.get("Global Quote", {}).get("05. price")
+                                current_price = float(price_str) if price_str else 0.0
+                                value = current_price * shares
+                                total_value += value
+
+                                detailed_holdings.append({
+                                    "symbol": symbol,
+                                    "shares": shares,
+                                    "current_price": current_price,
+                                    "value": round(value, 2)
+                                })
+
+                                logging.info(f"[PortfolioAnalysisAgent] {symbol}: {shares} @ {current_price} = {value}")
+
+                            except Exception as e:
+                                logging.error(f"[PortfolioAnalysisAgent] Error fetching price for {symbol}: {str(e)}")
+                                status = "failure"
+                                error_info = {
+                                    "code": "API_FETCH_ERROR",
+                                    "message": f"Could not fetch data for symbol: {symbol}"
                                 }
                                 break
 
@@ -96,11 +117,11 @@ class PortfolioAnalysisAgent(Agent):
                             result_data = {
                                 "portfolio_summary": {
                                     "total_value": round(total_value, 2),
-                                    "num_holdings": len(portfolio_items)
+                                    "num_holdings": len(detailed_holdings)
                                 },
                                 "holdings_details": detailed_holdings
                             }
-                            logging.info(f"[PortfolioAnalysisAgent] Analysis complete. Total value: {total_value}")
+                            logging.info(f"[PortfolioAnalysisAgent] Total portfolio value: {total_value}")
 
                     else:
                         status = "failure"
@@ -108,7 +129,6 @@ class PortfolioAnalysisAgent(Agent):
                             "code": "UNEXPECTED_INTENT",
                             "message": f"Unexpected intent: {intent}"
                         }
-                        logging.warning(f"[PortfolioAnalysisAgent] Unexpected intent received: {intent}")
 
                     reply_mcp = {
                         "protocol": "finance_mcp",
@@ -122,10 +142,8 @@ class PortfolioAnalysisAgent(Agent):
                     }
                     if status == "success":
                         reply_mcp["result"] = result_data
-                        logging.info(f"[PortfolioAnalysisAgent] Successfully processed request {task_id} for intent '{intent}'")
                     else:
                         reply_mcp["error"] = error_info
-                        logging.error(f"[PortfolioAnalysisAgent] Error processing request {task_id} for intent '{intent}': {error_info}")
 
                     reply = Message(to=reply_to)
                     reply.set_metadata("performative", "inform" if status == "success" else "failure")
@@ -133,19 +151,18 @@ class PortfolioAnalysisAgent(Agent):
                     reply.body = json.dumps(reply_mcp)
 
                     await self.send(reply)
-                    logging.info(f"[PortfolioAnalysisAgent] Response sent to {reply_to} (Status: {status})")
+                    logging.info(f"[PortfolioAnalysisAgent] Sent reply to {reply_to} (Status: {status})")
 
                 except json.JSONDecodeError:
-                    logging.error(f"[PortfolioAnalysisAgent] Malformed JSON from {msg.sender}: {msg.body}")
+                    logging.error(f"[PortfolioAnalysisAgent] Invalid JSON from {msg.sender}: {msg.body}")
                 except Exception as e:
-                    logging.error(f"[PortfolioAnalysisAgent] Exception in behaviour: {str(e)}")
+                    logging.error(f"[PortfolioAnalysisAgent] Unexpected error: {str(e)}")
 
     async def setup(self):
         print(f"[PortfolioAnalysisAgent] Agent {self.jid} started.")
         self.presence.set_available()
         logging.info(f"[PortfolioAnalysisAgent] Presence set to available.")
 
-        # Optional: Register service with DF
         register_service(
             "finance-data-provider",
             "analyze_portfolio",
@@ -156,7 +173,6 @@ class PortfolioAnalysisAgent(Agent):
         )
         logging.info(f"[PortfolioAnalysisAgent] Service registered.")
 
-        # Bind template to filter incoming messages
         template = Template()
         template.set_metadata("performative", "request")
         template.set_metadata("ontology", "finance-task")

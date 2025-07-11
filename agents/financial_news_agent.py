@@ -1,6 +1,7 @@
 import json
 import os
 import logging
+import httpx
 from datetime import datetime
 from spade.agent import Agent
 from spade.behaviour import CyclicBehaviour
@@ -21,9 +22,10 @@ logging.basicConfig(
     format="%(asctime)s || %(levelname)s || %(message)s"
 )
 logging.getLogger("spade.Agent").setLevel(logging.WARNING)
-# Define the agent's JID and password from environment variables
+
 FINANCIAL_NEWS_AGENT_JID = os.getenv("FINANCIAL_NEWS_AGENT_JID")
 FINANCIAL_NEWS_AGENT_PASSWORD = os.getenv("FINANCIAL_NEWS_AGENT_PASSWORD")
+NEWS_API_KEY = os.getenv("NEWS_API_KEY") 
 
 # Define the FinancialNewsAgent class
 class FinancialNewsAgent(Agent):
@@ -49,11 +51,13 @@ class FinancialNewsAgent(Agent):
                     logging.info(f"[FinancialNewsAgent] Received task from {msg.sender}: {data}")
 
                     intent = data.get("intent")
-                    query = data["parameters"].get("query")
-                    limit = data["parameters"].get("limit", 1)
-                    task_id = data["task_id"]
-                    parent = data["parent_task"]
-                    reply_to = data["reply_to"]
+                    params = data.get("parameters", {})
+                    query = params.get("query") or params.get("company") or "finance"
+                    limit = int(params.get("limit", 3))
+
+                    task_id = data.get("task_id")
+                    parent = data.get("parent_task")
+                    reply_to = data.get("reply_to")
 
                     result_data = None
                     status = "success"
@@ -61,28 +65,57 @@ class FinancialNewsAgent(Agent):
 
                     if intent == "get_financial_news":
                         logging.info(f"[FinancialNewsAgent] Simulating news fetch for '{query}' (limit: {limit})")
+                        logging.info(f"[FinancialNewsAgent] Using query: {query}")
+                        url = "https://newsapi.org/v2/everything"
+                        payload = {
+                            "q": query,
+                            "language": "en",
+                            "pageSize": limit,
+                            "sortBy": "publishedAt",
+                            "apiKey": NEWS_API_KEY
+                        }
 
-                        if query == "ERROR_NEWS":
+                        try:
+                            async with httpx.AsyncClient() as client:
+                                response = await client.get(url, params=payload, timeout=10)
+                                response.raise_for_status()
+                                api_data = response.json()
+
+                            if api_data.get("status") == "ok" and api_data.get("articles"):
+                                articles = [
+                                    {
+                                        "title": a.get("title"),
+                                        "source": a.get("source", {}).get("name"),
+                                        "date": a.get("publishedAt"),
+                                        "url": a.get("url")
+                                    } for a in api_data["articles"]
+                                ]
+                                result_data = {"query": query, "articles": articles}
+                                logging.info(f"[FinancialNewsAgent] {len(articles)} articles fetched.")
+                            else:
+                                status = "failure"
+                                error_info = {
+                                    "code": "NEWS_API_NO_DATA",
+                                    "message": f"No results for query: '{query}'"
+                                }
+                        except httpx.HTTPStatusError as e:
                             status = "failure"
                             error_info = {
-                                "code": "NEWS_API_ERROR",
-                                "message": f"Simulated error fetching news for '{query}'"
+                                "code": "HTTP_ERROR",
+                                "message": f"HTTP error {e.response.status_code}: {e.response.text}"
                             }
-                            logging.warning(f"[FinancialNewsAgent] Simulated error for query: {query}")
-                        else:
-                            articles = [
-                                {
-                                    "title": f"Google reports strong Q1 earnings, shares up {i + 1}%",
-                                    "source": "Financial Times",
-                                    "date": "2025-07-06",
-                                    "url": "https://example.com/news1"
-                                } for i in range(limit)
-                            ]
-                            result_data = {
-                                "query": query,
-                                "articles": articles
+                        except httpx.RequestError as e:
+                            status = "failure"
+                            error_info = {
+                                "code": "NETWORK_ERROR",
+                                "message": str(e)
                             }
-                            logging.info(f"[FinancialNewsAgent] Simulated financial news for '{query}'")
+                        except Exception as e:
+                            status = "failure"
+                            error_info = {
+                                "code": "UNEXPECTED_ERROR",
+                                "message": str(e)
+                            }
 
                     else:
                         status = "failure"
@@ -90,7 +123,6 @@ class FinancialNewsAgent(Agent):
                             "code": "UNEXPECTED_INTENT",
                             "message": f"Unexpected intent: {intent}"
                         }
-                        logging.error(f"[FinancialNewsAgent] Unexpected intent: {intent}")
 
                     reply_mcp = {
                         "protocol": "finance_mcp",
@@ -118,7 +150,7 @@ class FinancialNewsAgent(Agent):
                 except json.JSONDecodeError:
                     logging.error(f"[FinancialNewsAgent] Malformed JSON from {msg.sender}: {msg.body}")
                 except Exception as e:
-                    logging.exception(f"[FinancialNewsAgent] Exception: {str(e)}")
+                    logging.exception(f"[FinancialNewsAgent] Exception occurred: {str(e)}")
 
     async def setup(self):
         print(f"[FinancialNewsAgent] Agent {self.jid} started.")
@@ -130,7 +162,7 @@ class FinancialNewsAgent(Agent):
             "get_financial_news",
             str(self.jid),
             {
-                "description": "Agent for fetching financial news articles"
+                "description": "Agent for fetching real-time financial news using NewsAPI"
             }
         )
         logging.info(f"[FinancialNewsAgent] Service registered.")
@@ -155,3 +187,4 @@ if __name__ == "__main__":
             print("[FinancialNewsAgent] Agent shutdown complete.")
 
     asyncio.run(run_agent())
+
