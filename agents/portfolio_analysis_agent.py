@@ -11,9 +11,9 @@ from spade.template import Template
 from df_registry import register_service
 from dotenv import load_dotenv
 from spade.xmpp_client import XMPPClient
+
 # Load environment variables
 load_dotenv()
-
 
 # Setup logging
 os.makedirs("logs", exist_ok=True)
@@ -28,7 +28,6 @@ PORTFOLIO_ANALYSIS_AGENT_JID = os.getenv("PORTFOLIO_ANALYSIS_AGENT_JID")
 PORTFOLIO_ANALYSIS_AGENT_PASSWORD = os.getenv("PORTFOLIO_ANALYSIS_AGENT_PASSWORD")
 ALPHA_VANTAGE_API_KEY = os.getenv("ALPHA_VANTAGE_API_KEY")
 
-# Define the PortfolioAnalysisAgent class
 class PortfolioAnalysisAgent(Agent):
     def __init__(self, jid, password, auto_register=True):
         super().__init__(jid, password)
@@ -39,10 +38,9 @@ class PortfolioAnalysisAgent(Agent):
             self.jid,
             self.password,
             verify_security=False,
-            auto_register=self._custom_auto_register  # use this
+            auto_register=self._custom_auto_register
         )
-    
-    
+
     class HandlePortfolioAnalysisRequest(CyclicBehaviour):
         async def run(self):
             msg = await self.receive(timeout=10)
@@ -53,7 +51,7 @@ class PortfolioAnalysisAgent(Agent):
                     print(f"[PortfolioAnalysisAgent] Received task from {msg.sender}: {data}")
 
                     intent = data.get("intent")
-                    portfolio_items = data["parameters"].get("portfolio")
+                    portfolio_items = data["parameters"].get("holdings")
                     task_id = data["task_id"]
                     parent = data["parent_task"]
                     reply_to = data["reply_to"]
@@ -65,11 +63,13 @@ class PortfolioAnalysisAgent(Agent):
                     detailed_holdings = []
 
                     if intent == "analyze_portfolio":
+                        total_capital = 100000.0  # Simulated base capital
+
                         for item in portfolio_items:
                             symbol = item.get("symbol")
-                            shares = item.get("shares")
+                            allocation_str = item.get("allocation")
 
-                            if not symbol or shares is None:
+                            if not symbol or not allocation_str:
                                 status = "failure"
                                 error_info = {
                                     "code": "INVALID_PORTFOLIO_ITEM",
@@ -78,6 +78,9 @@ class PortfolioAnalysisAgent(Agent):
                                 break
 
                             try:
+                                allocation_percent = float(allocation_str.strip('%'))
+                                capital_allocated = (allocation_percent / 100.0) * total_capital
+
                                 url = f"https://www.alphavantage.co/query"
                                 params = {
                                     "function": "GLOBAL_QUOTE",
@@ -92,17 +95,18 @@ class PortfolioAnalysisAgent(Agent):
 
                                 price_str = api_data.get("Global Quote", {}).get("05. price")
                                 current_price = float(price_str) if price_str else 0.0
-                                value = current_price * shares
-                                total_value += value
+                                shares_estimated = round(capital_allocated / current_price, 2)
 
                                 detailed_holdings.append({
                                     "symbol": symbol,
-                                    "shares": shares,
-                                    "current_price": current_price,
-                                    "value": round(value, 2)
+                                    "allocation_percent": allocation_percent,
+                                    "capital_allocated": round(capital_allocated, 2),
+                                    "estimated_shares": shares_estimated,
+                                    "current_price": current_price
                                 })
+                                total_value += capital_allocated
 
-                                logging.info(f"[PortfolioAnalysisAgent] {symbol}: {shares} @ {current_price} = {value}")
+                                logging.info(f"[PortfolioAnalysisAgent] {symbol}: {allocation_percent}% = ₹{capital_allocated}")
 
                             except Exception as e:
                                 logging.error(f"[PortfolioAnalysisAgent] Error fetching price for {symbol}: {str(e)}")
@@ -116,12 +120,13 @@ class PortfolioAnalysisAgent(Agent):
                         if status == "success":
                             result_data = {
                                 "portfolio_summary": {
-                                    "total_value": round(total_value, 2),
+                                    "total_estimated_value": round(total_value, 2),
+                                    "base_capital": total_capital,
                                     "num_holdings": len(detailed_holdings)
                                 },
                                 "holdings_details": detailed_holdings
                             }
-                            logging.info(f"[PortfolioAnalysisAgent] Total portfolio value: {total_value}")
+                            logging.info(f"[PortfolioAnalysisAgent] Total estimated value: ₹{total_value}")
 
                     else:
                         status = "failure"

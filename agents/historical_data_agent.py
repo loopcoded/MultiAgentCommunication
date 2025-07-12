@@ -2,13 +2,14 @@ import json
 import os
 import logging
 import httpx
-from datetime import datetime
+from datetime import datetime,timedelta
 from spade.agent import Agent
 from spade.behaviour import CyclicBehaviour
 from spade.message import Message
 from spade.template import Template
 from dotenv import load_dotenv
 import asyncio
+from dateutil.relativedelta import relativedelta 
 from df_registry import register_service
 from spade.xmpp_client import XMPPClient
 
@@ -54,7 +55,8 @@ class HistoricalDataAgent(Agent):
                     parent_task = data.get("parent_task")
                     reply_to = data.get("reply_to")
                     symbol = params.get("symbol")
-                    print(f"[HistoricalDataAgent] Fetching real-time historical data for: {symbol}")
+                    period = params.get("period", "1 month")
+                    print(f"[HistoricalDataAgent] Fetching historical data for: {symbol}, Period: {period}")
 
                     result_data = None
                     status = "success"
@@ -73,32 +75,43 @@ class HistoricalDataAgent(Agent):
                             response = await client.get(url, params=query_params, timeout=10)
                             response.raise_for_status()
                             api_data = response.json()
-
+                    
+                        # Inside the handler:
                         if "Time Series (Daily)" in api_data:
+                            today = datetime.utcnow().date()
+                        
+                            # Parse period string
+                            delta_days = 30  # Default
+                            if "month" in period:
+                                try:
+                                    count = int(period.split()[0])
+                                    delta_days = 30 * count
+                                except:
+                                    pass
+                            elif "year" in period:
+                                try:
+                                    count = int(period.split()[0])
+                                    delta_days = 365 * count
+                                except:
+                                    pass
+                        
+                            threshold_date = today - timedelta(days=delta_days)                        
                             historical = []
                             for date_str, values in api_data["Time Series (Daily)"].items():
-                                historical.append({
-                                    "date": date_str,
-                                    "close_price": float(values["4. close"])
-                                })
-
+                                date_obj = datetime.strptime(date_str, "%Y-%m-%d").date()
+                                if date_obj >= threshold_date:
+                                    historical.append({
+                                        "date": date_str,
+                                        "close_price": float(values["4. close"])
+                                    })
+                        
                             result_data = {
                                 "symbol": symbol,
-                                "data_points": historical[:5]  # Limit for performance/demo
+                                "period": period,
+                                "data_points": historical[:30]  # Limit for performance, tune as needed
                             }
-                        elif "Error Message" in api_data:
-                            status = "failure"
-                            error_info = {
-                                "code": "ALPHA_VANTAGE_API_ERROR",
-                                "message": api_data["Error Message"]
-                            }
-                        else:
-                            status = "failure"
-                            error_info = {
-                                "code": "INVALID_RESPONSE",
-                                "message": "Unexpected Alpha Vantage response format."
-                            }
-
+                        
+                        
                     except httpx.RequestError as e:
                         status = "failure"
                         error_info = {

@@ -3,3 +3,4 @@ __pycache__/
 venv/
 **/logs/
 **/prosody-config/prosody.cfg.lua
+

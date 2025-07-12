@@ -6,7 +6,7 @@ from spade.agent import Agent
 from spade.behaviour import OneShotBehaviour, CyclicBehaviour
 from spade.message import Message
 from spade.template import Template
-from llm.mock_llm_parser import mock_nlu_llm_call
+from llm.mock_llm_parser import gemini_llm_call
 from df_registry import search_service
 from dotenv import load_dotenv
 from spade.xmpp_client import XMPPClient
@@ -58,7 +58,7 @@ class ManagerAgent(Agent):
             new_task_id = f"req_{self.agent.task_counter:03d}"
             print(f"[Manager] Received query: {user_query}" )
 
-            mcp_request = await mock_nlu_llm_call(user_query, new_task_id)
+            mcp_request = await gemini_llm_call(user_query, new_task_id)
             if not mcp_request:
                 print("[Manager] NLU failed to parse input.")
                 return
