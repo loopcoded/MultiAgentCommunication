@@ -1,5 +1,5 @@
 .env
 __pycache__/
 venv/
-logs/
-.logs/
+**/logs/
+**/prosody-config/prosody.cfg.lua

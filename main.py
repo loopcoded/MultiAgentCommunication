@@ -18,7 +18,8 @@ os.makedirs("logs", exist_ok=True)
 logging.basicConfig(
     filename="logs/manager.log",
     level=logging.INFO,
-    format="%(asctime)s || %(levelname)s || %(message)s"
+    format="%(asctime)s || %(levelname)s || %(message)s",
+    force=True
 )
 logging.getLogger("spade.Agent").setLevel(logging.WARNING)
 

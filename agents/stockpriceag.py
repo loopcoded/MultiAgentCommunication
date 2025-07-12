@@ -120,7 +120,7 @@ class StockPriceAgent(Agent):
                         "parent_task": parent,
                         "intent": intent,
                         "status": status,
-                        "timestamp": datetime.datetime.utcnow().isoformat()
+                        "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat()
                     }
                     if status == "success":
                         reply_payload["result"] = result_data
@@ -135,7 +135,8 @@ class StockPriceAgent(Agent):
                     reply.body = json.dumps(reply_payload)
 
                     await self.send(reply)
-                    logging.info(f"[StockPriceAgent] Response sent to {reply_to} - Status: {status}")
+                    print(f"[StockPriceAgent] Sent response to manager: {json.dumps(reply_payload, indent=2)}", flush=True)
+                    logging.info(f"[StockPriceAgent] Response sent to manager@localhost - Status: {status}")
 
                 except Exception as e:
                     logging.exception(f"[StockPriceAgent] Unhandled exception: {e}")

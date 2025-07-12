@@ -1,12 +1,12 @@
 import json
 import os
 import asyncio
-from datetime import datetime
+import datetime
 from spade.agent import Agent
 from spade.behaviour import OneShotBehaviour, CyclicBehaviour
 from spade.message import Message
 from spade.template import Template
-import spade
+from llm.mock_llm_parser import mock_nlu_llm_call
 from df_registry import search_service
 from dotenv import load_dotenv
 from spade.xmpp_client import XMPPClient
@@ -21,7 +21,8 @@ os.makedirs("logs", exist_ok=True)
 logging.basicConfig(
     filename="logs/manager.log",
     level=logging.INFO,
-    format="%(asctime)s || %(levelname)s || %(message)s"
+    format="%(asctime)s || %(levelname)s || %(message)s",
+    force=True
 )
 logging.getLogger("spade.Agent").setLevel(logging.WARNING)
 
@@ -32,7 +33,9 @@ MANAGER_PASSWORD = os.getenv("MANAGER_PASSWORD")
 class ManagerAgent(Agent):
     def __init__(self, jid, password, auto_register=False):
         super().__init__(jid, password)
+        self.task_counter = 0
         self.active_tasks = {}
+        self.response_queue = asyncio.Queue()
         self._custom_auto_register = auto_register
 
     def _init_client(self):
@@ -43,119 +46,144 @@ class ManagerAgent(Agent):
             auto_register=self._custom_auto_register  # use this
         )
     
-    class SimulateClientRequest(OneShotBehaviour):
+    class InteractiveInputBehaviour(CyclicBehaviour):
         async def run(self):
-            print("[Manager] Simulating client request...")
-            mcp_request = {
-                "protocol": "finance_mcp",
-                "version": "1.0",
-                "type": "composite_request",
-                "task_id": "req_001",
-                "client_id": "user_xyz",
-                "intents": [
-                    {"intent": "get_stock_price", "parameters": {"symbol": "TSLA"}},
-                    {"intent": "get_news_sentiment", "parameters": {"company": "Tesla"}},
-                    {"intent": "analyze_portfolio", "parameters": {"portfolio": [{"symbol": "TSLA", "shares": 3}, {"symbol": "AAPL", "shares": 5}, {"symbol": "GOOGL", "shares": 2}]}},
-                    {"intent": "get_financial_news", "parameters": {"company": "Tesla"}},
-                    {"intent": "get_historical_data", "parameters": {"symbol": "TSLA", "period": "1y","data_points": 100}}
-                ],
-                "timestamp": datetime.utcnow().isoformat()
-            }
+            user_query = input("\n[Client] Enter your financial query (e.g., 'What is TSLA stock price and news sentiment?'):\n> ")
+            if not user_query.strip():
+                print("[Client] No query entered. Waiting for next input...")
+                await asyncio.sleep(1)
+                return
 
-            task_id = mcp_request["task_id"]
-            self.agent.active_tasks[task_id] = {
+            self.agent.task_counter += 1
+            new_task_id = f"req_{self.agent.task_counter:03d}"
+            print(f"[Manager] Received query: {user_query}" )
+
+            mcp_request = await mock_nlu_llm_call(user_query, new_task_id)
+            if not mcp_request:
+                print("[Manager] NLU failed to parse input.")
+                return
+
+            print("[Manager] Parsed MCP request:" )
+            print(json.dumps(mcp_request, indent=2))
+
+            parent_task_id = mcp_request["task_id"]
+            self.agent.active_tasks[parent_task_id] = {
                 "client_id": mcp_request["client_id"],
                 "status": "pending",
-                "subtasks": {}
+                "subtasks": {},
+                "final_response": {}
             }
 
-            for intent in mcp_request["intents"]:
-                subtask_id = f"{task_id}_{intent['intent'].replace('get_', '')}"
-                self.agent.active_tasks[task_id]["subtasks"][subtask_id] = {
-                    "intent": intent["intent"],
+            for intent_data in mcp_request["intents"]:
+                subtask_id = f"{parent_task_id}_{intent_data['intent'].replace('get_', '').replace('analyze_', '')}"
+                self.agent.active_tasks[parent_task_id]["subtasks"][subtask_id] = {
+                    "intent": intent_data["intent"],
                     "status": "pending",
-                    "result": None
+                    "result": None,
+                    "error": None
                 }
 
-                print(f"[Manager] Searching DF for service '{intent['intent']}'")
-                matches = search_service("finance-data-provider", intent["intent"])
+                print(f"[Manager] Searching DF for: {intent_data['intent']}" )
+                matches = search_service("finance-data-provider", intent_data["intent"])
+
                 if not matches:
-                    print(f"[Manager] No worker found for intent: {intent['intent']}")
-                    self.agent.active_tasks[task_id]["subtasks"][subtask_id]["status"] = "failure"
-                    self.agent.active_tasks[task_id]["subtasks"][subtask_id]["result"] = {
-                        "error": "NO_WORKER_FOUND"
-                    }
+                    self.agent.active_tasks[parent_task_id]["subtasks"][subtask_id].update({
+                        "status": "failure",
+                        "error": {"code": "NO_WORKER_FOUND", "message": "No agent found"}
+                    })
+                    await self.agent.check_composite_task_completion(parent_task_id)
                     continue
 
-                worker_jid = matches[0]["jid"]
-                msg = Message(to=worker_jid)
-                msg.set_metadata("performative", "request")
-                msg.set_metadata("ontology", "finance-task")
-                msg.body = json.dumps({
+                target_jid = matches[0]["jid"]
+                subtask = {
                     "protocol": "finance_mcp",
                     "version": "1.0",
                     "type": "subtask_request",
                     "task_id": subtask_id,
-                    "parent_task": task_id,
-                    "intent": intent["intent"],
-                    "parameters": intent["parameters"],
+                    "parent_task": parent_task_id,
+                    "intent": intent_data["intent"],
+                    "parameters": intent_data["parameters"],
                     "reply_to": str(self.agent.jid),
-                    "timestamp": datetime.utcnow().isoformat()
-                })
+                    "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat()
+                }
 
-                print(f"[Manager] Dispatching {intent['intent']} to {worker_jid}")
+                msg = Message(to=target_jid)
+                msg.set_metadata("performative", "request")
+                msg.set_metadata("ontology", "finance-task")
+                msg.body = json.dumps(subtask)
+                print(f"[Manager] Sending subtask {subtask_id} to {target_jid}" )
                 await self.send(msg)
+
+            await self.agent.response_queue.get()
+
 
     class ReceiveWorkerResponse(CyclicBehaviour):
         async def run(self):
+            template = Template()
+            template.set_metadata("ontology", "finance-task")
             msg = await self.receive(timeout=10)
             if msg:
-                response = json.loads(msg.body)
-                task_id = response["parent_task"]
-                subtask_id = response["task_id"]
+                try:
+                    response = json.loads(msg.body)
+                    parent_task_id = response.get("parent_task")
+                    subtask_id = response.get("task_id")
+                    status = response.get("status")
 
-                if task_id in self.agent.active_tasks:
-                    subtask = self.agent.active_tasks[task_id]["subtasks"][subtask_id]
-                    subtask["status"] = response["status"]
-                    subtask["result"] = response.get("result") or response.get("error")
+                    if parent_task_id not in self.agent.active_tasks:
+                        print(f"[Manager] Unknown task ID: {parent_task_id}")
+                        return
 
-                    print(f"[Manager] Subtask {subtask_id} -> {response['status']}")
+                    task_ref = self.agent.active_tasks[parent_task_id]["subtasks"].get(subtask_id)
+                    if not task_ref:
+                        print(f"[Manager] Unknown subtask ID: {subtask_id}")
+                        return
 
-                    all_done = all(st["status"] != "pending"
-                                   for st in self.agent.active_tasks[task_id]["subtasks"].values())
+                    task_ref["status"] = status
+                    task_ref["result"] = response.get("result") if status == "success" else None
+                    task_ref["error"] = response.get("error") if status != "success" else None
+                    print(f"[Manager] Subtask {subtask_id} -> {status}")
+                    await self.agent.check_composite_task_completion(parent_task_id)
+                except Exception as e:
+                    print(f"[Manager] ERROR parsing worker response: {e}")
 
-                    if all_done:
-                        await self.agent.aggregate_final_result(task_id)
+    async def check_composite_task_completion(self, parent_task_id):
+        task_info = self.active_tasks.get(parent_task_id)
+        if not task_info:
+            return
 
-    async def aggregate_final_result(self, task_id):
-        final_result = {
+        if any(st["status"] == "pending" for st in task_info["subtasks"].values()):
+            return
+
+        result_payload = {
             "protocol": "finance_mcp",
             "version": "1.0",
             "type": "composite_response",
-            "task_id": task_id,
+            "task_id": parent_task_id,
+            "client_id": task_info["client_id"],
             "results": [],
-            "timestamp": datetime.utcnow().isoformat()
+            "overall_status": "success",
+            "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat()
         }
-        overall_status = "success"
-        for st in self.active_tasks[task_id]["subtasks"].values():
-            result_entry = {
-                "intent": st["intent"],
-                "status": st["status"]
-            }
-            if st["status"] == "success":
-                result_entry["data"] = st["result"]
+
+        for st_id, sub in task_info["subtasks"].items():
+            if sub["status"] == "success":
+                result_payload["results"].append({"intent": sub["intent"], "status": "success", "data": sub["result"]})
             else:
-                result_entry["error"] = st["result"]
-                overall_status = "partial_success"
-            final_result["results"].append(result_entry)
-        final_result["overall_status"] = overall_status
-        print("[Manager] Composite task result:")
-        print(json.dumps(final_result, indent=2))
+                result_payload["results"].append({"intent": sub["intent"], "status": "failure", "error": sub["error"]})
+                result_payload["overall_status"] = "partial_success"
+
+        task_info["status"] = result_payload["overall_status"]
+        task_info["final_response"] = result_payload
+
+        print(f"\n[Client] Final response for {parent_task_id}:" )
+        print(json.dumps(result_payload, indent=2) )
+        print("\n--------------------------------------------------\n")
+        await self.response_queue.put(True)
 
     async def setup(self):
         print(f"[Manager] Starting agent {self.jid}")
         self.presence.set_available()
-        self.add_behaviour(self.SimulateClientRequest())
+        self.add_behaviour(self.InteractiveInputBehaviour())
         template = Template()
         template.set_metadata("ontology", "finance-task")
         self.add_behaviour(self.ReceiveWorkerResponse(), template)
