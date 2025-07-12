@@ -146,6 +146,39 @@ class ManagerAgent(Agent):
                 except Exception as e:
                     print(f"[Manager] ERROR parsing worker response: {e}")
 
+    def format_response(result_payload):
+        lines = ["\n[Client] 🧾 Human-Readable Summary:"]
+        for r in result_payload["results"]:
+            intent = r["intent"]
+            status = r["status"]
+            if status != "success":
+                lines.append(f"❌ {intent.replace('_', ' ').title()}: Failed - {r.get('error', {}).get('message', 'Unknown error')}")
+                continue
+    
+            data = r.get("data", {})
+            if intent == "get_stock_price":
+                lines.append(f"📈 Stock Price of {data['symbol']}: ${data['price']}")
+            elif intent == "get_news_sentiment":
+                lines.append(f"🧠 Sentiment: {data['sentiment'].capitalize()} (Confidence: {data.get('confidence', '?')})")
+                summary = data.get("summary", "")
+                if summary:
+                    lines.append(f"   Summary: {summary[:300]}...")  
+            elif intent == "get_financial_news":
+                lines.append(f"📰 Top News for {data['query']}:")
+                for art in data.get("articles", [])[:2]:
+                    lines.append(f"   - {art['title']} ({art['source']})")
+            elif intent == "get_historical_data":
+                lines.append(f"📊 Historical Data for {data['symbol']} ({data['period']}):")
+                for pt in data.get("data_points", [])[:3]:
+                    lines.append(f"   - {pt['date']}: ${pt['close_price']}")
+            elif intent == "analyze_portfolio":
+                lines.append("💼 Portfolio Breakdown:")
+                for h in data["holdings_details"]:
+                    lines.append(f"   - {h['symbol']}: {h['allocation_percent']}% → ${h['capital_allocated']} → Est. Shares: {h['estimated_shares']}")
+    
+        lines.append("\n[Client] ✅ Summary completed.\n--------------------------------------------------\n")
+        return "\n".join(lines)
+    
     async def check_composite_task_completion(self, parent_task_id):
         task_info = self.active_tasks.get(parent_task_id)
         if not task_info:
@@ -179,7 +212,9 @@ class ManagerAgent(Agent):
         print(json.dumps(result_payload, indent=2) )
         print("\n--------------------------------------------------\n")
         await self.response_queue.put(True)
-
+        print(ManagerAgent.format_response(result_payload))
+    
+    
     async def setup(self):
         print(f"[Manager] Starting agent {self.jid}")
         self.presence.set_available()
