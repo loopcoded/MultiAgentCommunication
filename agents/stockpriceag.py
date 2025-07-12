@@ -11,20 +11,26 @@ from spade.xmpp_client import XMPPClient
 import os
 import logging
 import asyncio
+
 load_dotenv()
 
-# Ensure the logs directory exists
+# Logging setup
 os.makedirs("logs", exist_ok=True)
-logging.basicConfig(
-    filename="logs/stockpriceagent.log",
-    level=logging.INFO,
-    format="%(asctime)s || %(levelname)s || %(message)s"
-)
+logger = logging.getLogger("stock_price_agent")
+logger.setLevel(logging.INFO)
+
+if not logger.handlers:
+    handler = logging.FileHandler("logs/stock_price_agent.log", mode='a')
+    formatter = logging.Formatter('%(asctime)s || %(levelname)s || %(message)s')
+    handler.setFormatter(formatter)
+    logger.addHandler(handler)
+
 logging.getLogger("spade.Agent").setLevel(logging.WARNING)
 
 ALPHA_VANTAGE_API_KEY = os.getenv("ALPHA_VANTAGE_API_KEY")
 STOCK_PRICE_WORKER_JID = os.getenv("STOCK_PRICE_WORKER_JID")
 STOCK_PRICE_WORKER_PASSWORD = os.getenv("STOCK_PRICE_WORKER_PASSWORD")
+
 
 class StockPriceAgent(Agent):
     def __init__(self, jid, password, auto_register=True):
@@ -36,17 +42,16 @@ class StockPriceAgent(Agent):
             self.jid,
             self.password,
             verify_security=False,
-            auto_register=self._custom_auto_register  
+            auto_register=self._custom_auto_register
         )
-    
-    
+
     class HandleStockPriceRequest(CyclicBehaviour):
         async def run(self):
             msg = await self.receive(timeout=10)
             if msg:
                 try:
                     data = json.loads(msg.body)
-                    print(f"[StockPriceAgent] Received task from {msg.sender}: {data}")
+                    logger.info(f"[StockPriceAgent] Received task from {msg.sender}: {data}")
 
                     intent = data.get("intent")
                     symbol = data["parameters"].get("symbol")
@@ -59,7 +64,7 @@ class StockPriceAgent(Agent):
                     error_info = None
 
                     if intent == "get_stock_price":
-                        print(f"[StockPriceAgent] Fetching real-time stock price for {symbol}...")
+                        logger.info(f"[StockPriceAgent] Fetching real-time stock price for {symbol}...")
                         try:
                             url = f"https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol={symbol}&apikey={ALPHA_VANTAGE_API_KEY}"
                             async with httpx.AsyncClient() as client:
@@ -75,7 +80,7 @@ class StockPriceAgent(Agent):
                                         "symbol": symbol,
                                         "price": float(price)
                                     }
-                                    logging.info(f"[StockPriceAgent] Price for {symbol}: {price}")
+                                    logger.info(f"[StockPriceAgent] Fetched price for {symbol}: {price}")
                                 else:
                                     status = "failure"
                                     error_info = {
@@ -92,7 +97,7 @@ class StockPriceAgent(Agent):
                                 status = "failure"
                                 error_info = {
                                     "code": "UNKNOWN_FORMAT",
-                                    "message": f"Unexpected response from Alpha Vantage"
+                                    "message": "Unexpected response format from Alpha Vantage"
                                 }
 
                         except httpx.RequestError as e:
@@ -122,12 +127,13 @@ class StockPriceAgent(Agent):
                         "status": status,
                         "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat()
                     }
+
                     if status == "success":
                         reply_payload["result"] = result_data
-                        logging.info(f"[StockPriceAgent] Successfully processed task {task_id} for intent '{intent}'")
+                        logger.info(f"[StockPriceAgent] Task {task_id} processed successfully.")
                     else:
                         reply_payload["error"] = error_info
-                        logging.error(f"[StockPriceAgent] Error processing task {task_id} for intent '{intent}': {error_info}")
+                        logger.error(f"[StockPriceAgent] Task {task_id} failed: {error_info}")
 
                     reply = Message(to=reply_to)
                     reply.set_metadata("performative", "inform" if status == "success" else "failure")
@@ -135,39 +141,41 @@ class StockPriceAgent(Agent):
                     reply.body = json.dumps(reply_payload)
 
                     await self.send(reply)
-                    print(f"[StockPriceAgent] Sent response to manager: {json.dumps(reply_payload, indent=2)}", flush=True)
-                    logging.info(f"[StockPriceAgent] Response sent to manager@localhost - Status: {status}")
+                    logger.info(f"[StockPriceAgent] Response sent to {reply_to} | Status: {status}")
 
                 except Exception as e:
-                    logging.exception(f"[StockPriceAgent] Unhandled exception: {e}")
+                    logger.exception(f"[StockPriceAgent] Unhandled exception occurred: {e}")
 
     async def setup(self):
-        print(f"[StockPriceAgent] Agent {str(self.jid)} starting...")
-        logging.info(f"[StockPriceAgent] Agent {str(self.jid)} starting...")
+        logger.info(f"[StockPriceAgent] Agent {self.jid} setup initiated.")
         self.presence.set_available()
+        logger.info(f"[StockPriceAgent] Presence set to available.")
 
-        # Register service to DF_REGISTRY
-        register_service("finance-data-provider", "get_stock_price", str(self.jid), {
-            "description": "Provides real-time stock prices via Alpha Vantage"
-        })
-        logging.info(f"[StockPriceAgent] Service registered in DF.")
+        register_service(
+            "finance-data-provider",
+            "get_stock_price",
+            str(self.jid),
+            {"description": "Provides real-time stock prices via Alpha Vantage"}
+        )
+        logger.info(f"[StockPriceAgent] Service registered in DF.")
 
         template = Template()
         template.set_metadata("performative", "request")
         template.set_metadata("ontology", "finance-task")
         self.add_behaviour(self.HandleStockPriceRequest(), template)
 
+
 if __name__ == "__main__":
     async def run_agent():
         agent = StockPriceAgent(STOCK_PRICE_WORKER_JID, STOCK_PRICE_WORKER_PASSWORD)
         await agent.start(auto_register=True)
-        print("[StockPriceAgent] Agent is running. Press Ctrl+C to stop.")
+        logger.info("[StockPriceAgent] Agent is running. Press Ctrl+C to stop.")
         try:
             while True:
                 await asyncio.sleep(1)
         except KeyboardInterrupt:
-            print("[StockPriceAgent] Stopping agent...")
+            logger.info("[StockPriceAgent] Shutdown initiated.")
             await agent.stop()
-            print("[StockPriceAgent] Agent shutdown complete.")
+            logger.info("[StockPriceAgent] Agent shutdown complete.")
 
     asyncio.run(run_agent())

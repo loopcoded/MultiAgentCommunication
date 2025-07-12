@@ -14,13 +14,17 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# Ensure the logs directory exists
+# Logging setup
 os.makedirs("logs", exist_ok=True)
-logging.basicConfig(
-    filename="logs/news_sentiment_agent.log",
-    level=logging.INFO,
-    format="%(asctime)s || %(levelname)s || %(message)s"
-)
+logger = logging.getLogger("news_sentiment_agent")
+logger.setLevel(logging.INFO)
+
+if not logger.handlers:
+    handler = logging.FileHandler("logs/news_sentiment_agent.log", mode='a')
+    formatter = logging.Formatter('%(asctime)s || %(levelname)s || %(message)s')
+    handler.setFormatter(formatter)
+    logger.addHandler(handler)
+
 logging.getLogger("spade.Agent").setLevel(logging.WARNING)
 
 NEWS_SENTIMENT_WORKER_JID = os.getenv('NEWS_SENTIMENT_WORKER_JID')
@@ -28,7 +32,7 @@ NEWS_SENTIMENT_WORKER_PASSWORD = os.getenv('NEWS_SENTIMENT_WORKER_PASSWORD')
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 class NewsSentimentAgent(Agent):
-    def __init__(self, jid, password,auto_register=True):
+    def __init__(self, jid, password, auto_register=True):
         super().__init__(jid, password)
         self._custom_auto_register = auto_register
 
@@ -37,16 +41,16 @@ class NewsSentimentAgent(Agent):
             self.jid,
             self.password,
             verify_security=False,
-            auto_register=self._custom_auto_register 
+            auto_register=self._custom_auto_register
         )
-    
+
     class HandleSentimentRequest(CyclicBehaviour):
         async def run(self):
             msg = await self.receive(timeout=10)
             if msg:
                 try:
                     data = json.loads(msg.body)
-                    print(f"[NewsSentimentAgent] Received task from {msg.sender}: {data}")
+                    logger.info(f"[NewsSentimentAgent] Received task from {msg.sender}: {data}")
 
                     intent = data.get("intent")
                     company = data.get("parameters", {}).get("company")
@@ -60,7 +64,7 @@ class NewsSentimentAgent(Agent):
 
                     if intent == "get_news_sentiment":
                         try:
-                            logging.info(f"[NewsSentimentAgent] Querying Gemini API for company: {company}")
+                            logger.info(f"[NewsSentimentAgent] Querying Gemini API for company: {company}")
                             prompt = (
                                 f"Summarize the most recent financial news about {company} "
                                 "and determine the sentiment as 'positive', 'negative', or 'neutral'."
@@ -68,7 +72,7 @@ class NewsSentimentAgent(Agent):
                             headers = {
                                 "Content-Type": "application/json",
                                 "X-goog-api-key": GEMINI_API_KEY
-                            } 
+                            }
                             payload = {
                                 "contents": [
                                     {
@@ -77,7 +81,7 @@ class NewsSentimentAgent(Agent):
                                 ]
                             }
                             url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent"
-                           
+
                             async with httpx.AsyncClient() as client:
                                 response = await client.post(url, headers=headers, json=payload, timeout=20)
                                 response.raise_for_status()
@@ -95,7 +99,7 @@ class NewsSentimentAgent(Agent):
                                 "summary": summary
                             }
 
-                            logging.info(f"[NewsSentimentAgent] Sentiment result: {sentiment} | Summary: {summary}")
+                            logger.info(f"[NewsSentimentAgent] Sentiment: {sentiment} | Summary: {summary}")
 
                         except httpx.HTTPStatusError as e:
                             status = "failure"
@@ -103,15 +107,14 @@ class NewsSentimentAgent(Agent):
                                 "code": "GEMINI_HTTP_ERROR",
                                 "message": f"Gemini HTTP Error: {e.response.status_code} - {e.response.text}"
                             }
-                            logging.error(f"[NewsSentimentAgent] HTTP error: {e}")
+                            logger.error(f"[NewsSentimentAgent] HTTP error: {e}")
                         except Exception as e:
                             status = "failure"
                             error_info = {
                                 "code": "GEMINI_EXCEPTION",
                                 "message": str(e)
                             }
-                            logging.error(f"[NewsSentimentAgent] Unexpected error: {e}")
-
+                            logger.exception(f"[NewsSentimentAgent] Unexpected error during Gemini call.")
                     else:
                         status = "failure"
                         error_info = {
@@ -129,6 +132,7 @@ class NewsSentimentAgent(Agent):
                         "status": status,
                         "timestamp": datetime.datetime.utcnow().isoformat()
                     }
+
                     if status == "success":
                         reply_mcp["result"] = result_data
                     else:
@@ -140,16 +144,15 @@ class NewsSentimentAgent(Agent):
                     reply.body = json.dumps(reply_mcp)
 
                     await self.send(reply)
-                    logging.info(f"[NewsSentimentAgent] Response sent to {reply_to} | Status: {status}")
+                    logger.info(f"[NewsSentimentAgent] Response sent to {reply_to} | Status: {status}")
 
                 except json.JSONDecodeError:
-                    logging.error(f"[NewsSentimentAgent] ERROR: Received malformed JSON from {msg.sender}: {msg.body}")
+                    logger.error(f"[NewsSentimentAgent] Malformed JSON received from {msg.sender}: {msg.body}")
                 except Exception as e:
-                    logging.error(f"[NewsSentimentAgent] Unexpected error: {e}")
+                    logger.exception(f"[NewsSentimentAgent] Fatal error in processing message.")
 
     async def setup(self):
-        print(f"[NewsSentimentAgent] Agent {str(self.jid)} ready.")
-        logging.info(f"[NewsSentimentAgent] Agent {str(self.jid)} initialized.")
+        logger.info(f"[NewsSentimentAgent] Agent {str(self.jid)} initialized.")
         self.presence.set_available()
 
         register_service(
@@ -158,7 +161,7 @@ class NewsSentimentAgent(Agent):
             str(self.jid),
             {"description": "Provides news sentiment analysis using LLM"}
         )
-        logging.info(f"[NewsSentimentAgent] Service registered in DF.")
+        logger.info(f"[NewsSentimentAgent] Service registered in DF.")
 
         template = Template()
         template.set_metadata("performative", "request")
@@ -169,13 +172,13 @@ if __name__ == "__main__":
     async def run_agent():
         agent = NewsSentimentAgent(NEWS_SENTIMENT_WORKER_JID, NEWS_SENTIMENT_WORKER_PASSWORD)
         await agent.start(auto_register=True)
-        print("[NewsSentimentAgent] Agent is running. Press Ctrl+C to stop.")
+        logger.info("[NewsSentimentAgent] Agent is running. Press Ctrl+C to stop.")
         try:
             while True:
                 await asyncio.sleep(1)
         except KeyboardInterrupt:
-            print("[NewsSentimentAgent] Stopping agent...")
+            logger.info("[NewsSentimentAgent] Stopping agent...")
             await agent.stop()
-            print("[NewsSentimentAgent] Shutdown complete.")
+            logger.info("[NewsSentimentAgent] Shutdown complete.")
 
     asyncio.run(run_agent())

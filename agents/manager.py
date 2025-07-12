@@ -2,6 +2,7 @@ import json
 import os
 import asyncio
 import datetime
+import logging
 from spade.agent import Agent
 from spade.behaviour import OneShotBehaviour, CyclicBehaviour
 from spade.message import Message
@@ -10,22 +11,21 @@ from llm.mock_llm_parser import gemini_llm_call
 from df_registry import search_service
 from dotenv import load_dotenv
 from spade.xmpp_client import XMPPClient
-import os
-import logging
+
 load_dotenv()
 
-# Ensure the logs directory exists
+# Configure custom logging
 os.makedirs("logs", exist_ok=True)
+logger = logging.getLogger("manager_agent")
+logger.setLevel(logging.INFO)
 
-# Configure logging
-logging.basicConfig(
-    filename="logs/manager.log",
-    level=logging.INFO,
-    format="%(asctime)s || %(levelname)s || %(message)s",
-    force=True
-)
+if not logger.handlers:
+    handler = logging.FileHandler("logs/manager_agent.log", mode='a')
+    formatter = logging.Formatter('%(asctime)s || %(levelname)s || %(message)s')
+    handler.setFormatter(formatter)
+    logger.addHandler(handler)
+
 logging.getLogger("spade.Agent").setLevel(logging.WARNING)
-
 
 MANAGER_JID = os.getenv("MANAGER_JID")
 MANAGER_PASSWORD = os.getenv("MANAGER_PASSWORD")
@@ -43,28 +43,28 @@ class ManagerAgent(Agent):
             self.jid,
             self.password,
             verify_security=False,
-            auto_register=self._custom_auto_register  # use this
+            auto_register=self._custom_auto_register
         )
-    
+
     class InteractiveInputBehaviour(CyclicBehaviour):
         async def run(self):
             user_query = input("\n[Client] Enter your financial query (e.g., 'What is TSLA stock price and news sentiment?'):\n> ")
             if not user_query.strip():
-                print("[Client] No query entered. Waiting for next input...")
+                logger.warning("[Client] No query entered. Waiting for next input...")
                 await asyncio.sleep(1)
                 return
 
             self.agent.task_counter += 1
             new_task_id = f"req_{self.agent.task_counter:03d}"
-            print(f"[Manager] Received query: {user_query}" )
+            logger.info(f"[Manager] Received query: {user_query}")
 
             mcp_request = await gemini_llm_call(user_query, new_task_id)
             if not mcp_request:
-                print("[Manager] NLU failed to parse input.")
+                logger.error("[Manager] NLU failed to parse input.")
                 return
 
-            print("[Manager] Parsed MCP request:" )
-            print(json.dumps(mcp_request, indent=2))
+            logger.info("[Manager] Parsed MCP request:")
+            logger.info(json.dumps(mcp_request, indent=2))
 
             parent_task_id = mcp_request["task_id"]
             self.agent.active_tasks[parent_task_id] = {
@@ -83,10 +83,11 @@ class ManagerAgent(Agent):
                     "error": None
                 }
 
-                print(f"[Manager] Searching DF for: {intent_data['intent']}" )
+                logger.info(f"[Manager] Searching DF for: {intent_data['intent']}")
                 matches = search_service("finance-data-provider", intent_data["intent"])
 
                 if not matches:
+                    logger.warning(f"[Manager] No agent found for intent: {intent_data['intent']}")
                     self.agent.active_tasks[parent_task_id]["subtasks"][subtask_id].update({
                         "status": "failure",
                         "error": {"code": "NO_WORKER_FOUND", "message": "No agent found"}
@@ -111,11 +112,10 @@ class ManagerAgent(Agent):
                 msg.set_metadata("performative", "request")
                 msg.set_metadata("ontology", "finance-task")
                 msg.body = json.dumps(subtask)
-                print(f"[Manager] Sending subtask {subtask_id} to {target_jid}" )
+                logger.info(f"[Manager] Sending subtask {subtask_id} to {target_jid}")
                 await self.send(msg)
 
             await self.agent.response_queue.get()
-
 
     class ReceiveWorkerResponse(CyclicBehaviour):
         async def run(self):
@@ -130,21 +130,21 @@ class ManagerAgent(Agent):
                     status = response.get("status")
 
                     if parent_task_id not in self.agent.active_tasks:
-                        print(f"[Manager] Unknown task ID: {parent_task_id}")
+                        logger.warning(f"[Manager] Unknown task ID: {parent_task_id}")
                         return
 
                     task_ref = self.agent.active_tasks[parent_task_id]["subtasks"].get(subtask_id)
                     if not task_ref:
-                        print(f"[Manager] Unknown subtask ID: {subtask_id}")
+                        logger.warning(f"[Manager] Unknown subtask ID: {subtask_id}")
                         return
 
                     task_ref["status"] = status
                     task_ref["result"] = response.get("result") if status == "success" else None
                     task_ref["error"] = response.get("error") if status != "success" else None
-                    print(f"[Manager] Subtask {subtask_id} -> {status}")
+                    logger.info(f"[Manager] Subtask {subtask_id} -> {status}")
                     await self.agent.check_composite_task_completion(parent_task_id)
                 except Exception as e:
-                    print(f"[Manager] ERROR parsing worker response: {e}")
+                    logger.exception(f"[Manager] ERROR parsing worker response: {e}")
 
     def format_response(result_payload):
         lines = ["\n[Client] 🧾 Human-Readable Summary:"]
@@ -154,7 +154,7 @@ class ManagerAgent(Agent):
             if status != "success":
                 lines.append(f"❌ {intent.replace('_', ' ').title()}: Failed - {r.get('error', {}).get('message', 'Unknown error')}")
                 continue
-    
+
             data = r.get("data", {})
             if intent == "get_stock_price":
                 lines.append(f"📈 Stock Price of {data['symbol']}: ${data['price']}")
@@ -162,7 +162,7 @@ class ManagerAgent(Agent):
                 lines.append(f"🧠 Sentiment: {data['sentiment'].capitalize()} (Confidence: {data.get('confidence', '?')})")
                 summary = data.get("summary", "")
                 if summary:
-                    lines.append(f"   Summary: {summary[:300]}...")  
+                    lines.append(f"   Summary: {summary}")
             elif intent == "get_financial_news":
                 lines.append(f"📰 Top News for {data['query']}:")
                 for art in data.get("articles", [])[:2]:
@@ -175,10 +175,10 @@ class ManagerAgent(Agent):
                 lines.append("💼 Portfolio Breakdown:")
                 for h in data["holdings_details"]:
                     lines.append(f"   - {h['symbol']}: {h['allocation_percent']}% → ${h['capital_allocated']} → Est. Shares: {h['estimated_shares']}")
-    
+
         lines.append("\n[Client] ✅ Summary completed.\n--------------------------------------------------\n")
         return "\n".join(lines)
-    
+
     async def check_composite_task_completion(self, parent_task_id):
         task_info = self.active_tasks.get(parent_task_id)
         if not task_info:
@@ -208,15 +208,12 @@ class ManagerAgent(Agent):
         task_info["status"] = result_payload["overall_status"]
         task_info["final_response"] = result_payload
 
-        print(f"\n[Client] Final response for {parent_task_id}:" )
-        print(json.dumps(result_payload, indent=2) )
-        print("\n--------------------------------------------------\n")
-        await self.response_queue.put(True)
+        logger.info(f"[Manager] Final response for {parent_task_id}: {json.dumps(result_payload, indent=2)}")
         print(ManagerAgent.format_response(result_payload))
-    
-    
+        await self.response_queue.put(True)
+
     async def setup(self):
-        print(f"[Manager] Starting agent {self.jid}")
+        logger.info(f"[Manager] Starting agent {self.jid}")
         self.presence.set_available()
         self.add_behaviour(self.InteractiveInputBehaviour())
         template = Template()
@@ -227,13 +224,13 @@ if __name__ == "__main__":
     async def run_agent():
         agent = ManagerAgent(MANAGER_JID, MANAGER_PASSWORD)
         await agent.start(auto_register=True)
-        print("[Manager] Agent is running. Press Ctrl+C to stop.")
+        logger.info("[Manager] Agent is running. Press Ctrl+C to stop.")
         try:
             while True:
                 await asyncio.sleep(1)
         except KeyboardInterrupt:
-            print("[Manager] Stopping agent...")
+            logger.info("[Manager] Stopping agent...")
             await agent.stop()
-            print("[Manager] Agent shutdown complete.")
+            logger.info("[Manager] Agent shutdown complete.")
 
     asyncio.run(run_agent())

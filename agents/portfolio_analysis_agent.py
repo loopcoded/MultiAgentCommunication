@@ -15,18 +15,28 @@ from spade.xmpp_client import XMPPClient
 # Load environment variables
 load_dotenv()
 
-# Setup logging
+# Logging setup
 os.makedirs("logs", exist_ok=True)
-logging.basicConfig(
-    filename="logs/portfolio_agent.log",
-    level=logging.INFO,
-    format="%(asctime)s || %(levelname)s || %(message)s"
-)
-logging.getLogger("spade.Agent").setLevel(logging.WARNING)
+logger = logging.getLogger("portfolio_analysis_agent")
+logger.setLevel(logging.INFO)
+
+if not logger.handlers:
+    # FileHandler with UTF-8 encoding
+    file_handler = logging.FileHandler("logs/portfolio_analysis_agent.log", mode='a', encoding='utf-8')
+    file_formatter = logging.Formatter('%(asctime)s || %(levelname)s || %(message)s')
+    file_handler.setFormatter(file_formatter)
+    logger.addHandler(file_handler)
+
+    # StreamHandler for console (safe fallback)
+    stream_handler = logging.StreamHandler()
+    stream_handler.setFormatter(file_formatter)
+    logger.addHandler(stream_handler)
+
 
 PORTFOLIO_ANALYSIS_AGENT_JID = os.getenv("PORTFOLIO_ANALYSIS_AGENT_JID")
 PORTFOLIO_ANALYSIS_AGENT_PASSWORD = os.getenv("PORTFOLIO_ANALYSIS_AGENT_PASSWORD")
 ALPHA_VANTAGE_API_KEY = os.getenv("ALPHA_VANTAGE_API_KEY")
+
 
 class PortfolioAnalysisAgent(Agent):
     def __init__(self, jid, password, auto_register=True):
@@ -47,8 +57,7 @@ class PortfolioAnalysisAgent(Agent):
             if msg:
                 try:
                     data = json.loads(msg.body)
-                    logging.info(f"[PortfolioAnalysisAgent] Received request: {data}")
-                    print(f"[PortfolioAnalysisAgent] Received task from {msg.sender}: {data}")
+                    logger.info(f"[PortfolioAnalysisAgent] Received task from {msg.sender}: {data}")
 
                     intent = data.get("intent")
                     portfolio_items = data["parameters"].get("holdings")
@@ -106,10 +115,10 @@ class PortfolioAnalysisAgent(Agent):
                                 })
                                 total_value += capital_allocated
 
-                                logging.info(f"[PortfolioAnalysisAgent] {symbol}: {allocation_percent}% = ₹{capital_allocated}")
+                                logger.info(f"[PortfolioAnalysisAgent] {symbol}: {allocation_percent}% = ₹{capital_allocated:.2f}")
 
                             except Exception as e:
-                                logging.error(f"[PortfolioAnalysisAgent] Error fetching price for {symbol}: {str(e)}")
+                                logger.exception(f"[PortfolioAnalysisAgent] Error processing symbol {symbol}: {e}")
                                 status = "failure"
                                 error_info = {
                                     "code": "API_FETCH_ERROR",
@@ -126,7 +135,7 @@ class PortfolioAnalysisAgent(Agent):
                                 },
                                 "holdings_details": detailed_holdings
                             }
-                            logging.info(f"[PortfolioAnalysisAgent] Total estimated value: ₹{total_value}")
+                            logger.info(f"[PortfolioAnalysisAgent] Total portfolio value: ₹{total_value:.2f}")
 
                     else:
                         status = "failure"
@@ -145,6 +154,7 @@ class PortfolioAnalysisAgent(Agent):
                         "status": status,
                         "timestamp": datetime.datetime.utcnow().isoformat()
                     }
+
                     if status == "success":
                         reply_mcp["result"] = result_data
                     else:
@@ -156,17 +166,17 @@ class PortfolioAnalysisAgent(Agent):
                     reply.body = json.dumps(reply_mcp)
 
                     await self.send(reply)
-                    logging.info(f"[PortfolioAnalysisAgent] Sent reply to {reply_to} (Status: {status})")
+                    logger.info(f"[PortfolioAnalysisAgent] Sent reply to {reply_to} with status: {status}")
 
                 except json.JSONDecodeError:
-                    logging.error(f"[PortfolioAnalysisAgent] Invalid JSON from {msg.sender}: {msg.body}")
+                    logger.error(f"[PortfolioAnalysisAgent] Malformed JSON from {msg.sender}: {msg.body}")
                 except Exception as e:
-                    logging.error(f"[PortfolioAnalysisAgent] Unexpected error: {str(e)}")
+                    logger.exception(f"[PortfolioAnalysisAgent] Unexpected error: {e}")
 
     async def setup(self):
-        print(f"[PortfolioAnalysisAgent] Agent {self.jid} started.")
+        logger.info(f"[PortfolioAnalysisAgent] Agent {self.jid} initialized and starting.")
         self.presence.set_available()
-        logging.info(f"[PortfolioAnalysisAgent] Presence set to available.")
+        logger.info(f"[PortfolioAnalysisAgent] Presence set to available.")
 
         register_service(
             "finance-data-provider",
@@ -176,7 +186,7 @@ class PortfolioAnalysisAgent(Agent):
                 "description": "Agent for analyzing financial portfolios"
             }
         )
-        logging.info(f"[PortfolioAnalysisAgent] Service registered.")
+        logger.info(f"[PortfolioAnalysisAgent] Service registered in DF.")
 
         template = Template()
         template.set_metadata("performative", "request")
@@ -187,13 +197,13 @@ if __name__ == "__main__":
     async def run_agent():
         agent = PortfolioAnalysisAgent(PORTFOLIO_ANALYSIS_AGENT_JID, PORTFOLIO_ANALYSIS_AGENT_PASSWORD)
         await agent.start(auto_register=True)
-        print("[PortfolioAnalysisAgent] Agent is running. Press Ctrl+C to stop.")
+        logger.info("[PortfolioAnalysisAgent] Agent is running. Press Ctrl+C to stop.")
         try:
             while True:
                 await asyncio.sleep(1)
         except KeyboardInterrupt:
-            print("[PortfolioAnalysisAgent] Stopping agent...")
+            logger.info("[PortfolioAnalysisAgent] Stopping agent...")
             await agent.stop()
-            print("[PortfolioAnalysisAgent] Agent shutdown complete.")
+            logger.info("[PortfolioAnalysisAgent] Agent shutdown complete.")
 
     asyncio.run(run_agent())
