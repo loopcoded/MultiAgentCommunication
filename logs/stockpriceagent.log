@@ -1,7 +1,0 @@
-2025-07-08 02:35:04,674 || ERROR || Exception in the event loop: An asyncio.Future, a coroutine or an awaitable is required
-2025-07-08 13:18:27,769 || ERROR || Exception in the event loop: An asyncio.Future, a coroutine or an awaitable is required
-2025-07-08 13:20:45,635 || INFO || Authentication failed: not-authorized
-2025-07-08 13:20:45,636 || ERROR || No appropriate login method.
-2025-07-08 13:20:45,641 || INFO || connection_lost: (None,)
-2025-07-08 13:22:09,518 || INFO || Authentication failed: not-authorized
-2025-07-08 13:22:09,519 || ERROR || No appropriate login method.
