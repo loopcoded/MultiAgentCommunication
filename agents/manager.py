@@ -25,6 +25,16 @@ if not logger.handlers:
     handler.setFormatter(formatter)
     logger.addHandler(handler)
 
+# Metrics logger setup
+metrics_logger = logging.getLogger("manager_metrics")
+metrics_logger.setLevel(logging.INFO)
+
+if not metrics_logger.handlers:
+    m_handler = logging.FileHandler("logs/manager_metrics.log", mode='a', encoding='utf-8')
+    m_formatter = logging.Formatter('%(asctime)s || %(message)s')
+    m_handler.setFormatter(m_formatter)
+    metrics_logger.addHandler(m_handler)
+
 logging.getLogger("spade.Agent").setLevel(logging.WARNING)
 
 MANAGER_JID = os.getenv("MANAGER_JID")
@@ -37,6 +47,12 @@ class ManagerAgent(Agent):
         self.active_tasks = {}
         self.response_queue = asyncio.Queue()
         self._custom_auto_register = auto_register
+        self.metrics_store = {
+            "interoperable_agents": set(),
+            "task_timings": {},  # task_id: start_time
+            "errors": 0
+        }
+
 
     def _init_client(self):
         return XMPPClient(
@@ -114,8 +130,14 @@ class ManagerAgent(Agent):
                 msg.body = json.dumps(subtask)
                 logger.info(f"[Manager] Sending subtask {subtask_id} to {target_jid}")
                 await self.send(msg)
+                # After finding target_jid
+                self.agent.metrics_store["interoperable_agents"].add(target_jid)
 
+            # Move this line ABOVE the for-loop (just after setting up self.agent.active_tasks)
+            self.agent.metrics_store["task_timings"][parent_task_id] = datetime.datetime.now(datetime.timezone.utc)
             await self.agent.response_queue.get()
+            self.agent.response_queue.task_done()
+            logger.info("[Manager] Ready for next user query.")
 
     class ReceiveWorkerResponse(CyclicBehaviour):
         async def run(self):
@@ -143,6 +165,16 @@ class ManagerAgent(Agent):
                     task_ref["error"] = response.get("error") if status != "success" else None
                     logger.info(f"[Manager] Subtask {subtask_id} -> {status}")
                     await self.agent.check_composite_task_completion(parent_task_id)
+                    start_time = self.agent.metrics_store["task_timings"].get(parent_task_id)
+                    if start_time:
+                        latency = (datetime.datetime.now(datetime.timezone.utc) - start_time).total_seconds()
+                        metrics_logger.info(f"[Latency] Task {parent_task_id} took {latency:.2f}s")
+                    
+                    if status != "success":
+                        self.agent.metrics_store["errors"] += 1
+                        metrics_logger.info(f"[Error] Task {subtask_id} failed: {response.get('error', {}).get('message', 'N/A')}")
+     
+     
                 except Exception as e:
                     logger.exception(f"[Manager] ERROR parsing worker response: {e}")
 
@@ -183,10 +215,10 @@ class ManagerAgent(Agent):
         task_info = self.active_tasks.get(parent_task_id)
         if not task_info:
             return
-
+    
         if any(st["status"] == "pending" for st in task_info["subtasks"].values()):
             return
-
+    
         result_payload = {
             "protocol": "finance_mcp",
             "version": "1.0",
@@ -197,20 +229,39 @@ class ManagerAgent(Agent):
             "overall_status": "success",
             "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat()
         }
-
+    
         for st_id, sub in task_info["subtasks"].items():
             if sub["status"] == "success":
                 result_payload["results"].append({"intent": sub["intent"], "status": "success", "data": sub["result"]})
             else:
                 result_payload["results"].append({"intent": sub["intent"], "status": "failure", "error": sub["error"]})
                 result_payload["overall_status"] = "partial_success"
-
+    
         task_info["status"] = result_payload["overall_status"]
         task_info["final_response"] = result_payload
-
+    
         logger.info(f"[Manager] Final response for {parent_task_id}: {json.dumps(result_payload, indent=2)}")
+    
+        # === ✅ Metrics ===
+        interop_agents = self.metrics_store["interoperable_agents"]
+        interop_count = len(interop_agents)
+    
+        total = len(task_info["subtasks"])
+        errors = sum(1 for s in task_info["subtasks"].values() if s["status"] != "success")
+        error_rate = (errors / total) * 100 if total > 0 else 0
+    
         print(ManagerAgent.format_response(result_payload))
+    
+        metrics_logger.info(
+            f"[Summary] Task {parent_task_id}: Interop Agents={interop_count}, Errors={errors}/{total} ({error_rate:.1f}%)"
+        )
+    
+        # ✅ Reset metrics for next run
+        self.metrics_store["interoperable_agents"].clear()
+        self.metrics_store["task_timings"].pop(parent_task_id, None)
+    
         await self.response_queue.put(True)
+
 
     async def setup(self):
         logger.info(f"[Manager] Starting agent {self.jid}")

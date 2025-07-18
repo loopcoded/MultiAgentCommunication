@@ -11,7 +11,7 @@ from spade.template import Template
 from df_registry import register_service
 from dotenv import load_dotenv
 from spade.xmpp_client import XMPPClient
-
+from utils.metrics import track_metrics 
 # Load environment variables
 load_dotenv()
 
@@ -52,6 +52,7 @@ class PortfolioAnalysisAgent(Agent):
         )
 
     class HandlePortfolioAnalysisRequest(CyclicBehaviour):
+        @track_metrics  # Decorator to track metrics
         async def run(self):
             msg = await self.receive(timeout=10)
             if msg:

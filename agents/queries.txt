@@ -1,0 +1,13 @@
+Tell me the current stock price and latest sentiment for Microsoft. Also, show me financial news related to Amazon. I’d like to see Google’s historical performance over the last 6 months. Finally, analyze this portfolio: TSLA 40%, NVDA 35%, AAPL 25%.
+
+What is the stock price of Google?
+
+Tell me the news sentiment for Tesla.
+
+Get historical data for Microsoft.
+
+Show me the latest financial news about Google earnings.
+
+Analyze my portfolio with 10 shares of GOOG, 5 of MSFT, and 2 of Apple.
+
+What is the stock price of TSLA and its news sentiment?

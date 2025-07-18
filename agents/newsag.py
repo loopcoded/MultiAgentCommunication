@@ -11,7 +11,7 @@ from spade.template import Template
 from df_registry import register_service
 from spade.xmpp_client import XMPPClient
 from dotenv import load_dotenv
-
+from utils.metrics import track_metrics
 load_dotenv()
 
 # Logging setup
@@ -45,6 +45,7 @@ class NewsSentimentAgent(Agent):
         )
 
     class HandleSentimentRequest(CyclicBehaviour):
+        @track_metrics  # Decorator to track metrics
         async def run(self):
             msg = await self.receive(timeout=10)
             if msg:

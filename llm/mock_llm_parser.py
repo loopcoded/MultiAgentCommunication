@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 GOOGLE_API_KEY = os.getenv("GEMINI_API_KEY")
 
-MODEL = "gemini-1.5-flash"  # Use flash for free tier
+MODEL = "gemini-1.5-flash"  
 GEN_URL = f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent?key={GOOGLE_API_KEY}"
 
 async def gemini_llm_call(user_query: str, task_id: str) -> dict:

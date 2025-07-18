@@ -11,7 +11,7 @@ from spade.xmpp_client import XMPPClient
 import os
 import logging
 import asyncio
-
+from utils.metrics import track_metrics
 load_dotenv()
 
 # Logging setup
@@ -46,6 +46,7 @@ class StockPriceAgent(Agent):
         )
 
     class HandleStockPriceRequest(CyclicBehaviour):
+        @track_metrics  # Decorator to track metrics
         async def run(self):
             msg = await self.receive(timeout=10)
             if msg:

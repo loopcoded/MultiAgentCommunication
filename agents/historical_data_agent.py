@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 from df_registry import register_service
 from spade.xmpp_client import XMPPClient
 import asyncio
-
+from utils.metrics import track_metrics
 # Load environment variables
 load_dotenv()
 
@@ -46,6 +46,7 @@ class HistoricalDataAgent(Agent):
         )
 
     class HandleHistoricalDataRequest(CyclicBehaviour):
+        @track_metrics  # Decorator to track metrics
         async def run(self):
             msg = await self.receive(timeout=10)
             if msg:
